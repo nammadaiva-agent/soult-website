@@ -1,4 +1,5 @@
 import Link from "next/link";
+import HeroCarousel from "@/components/HeroCarousel";
 import { supabase } from "@/lib/supabase";
 import type { PricingPlan, Promotion } from "@/lib/supabase";
 
@@ -319,46 +320,8 @@ export default async function HomePage() {
         }
       `}</style>
 
-      {/* ── Hero ── */}
-      <section className="sd-hero">
-        <div className="sd-hero-inner">
-          <div>
-            <div className="sd-hero-badge">
-              <span className="sd-hero-badge-dot" />
-              India&apos;s Digital Legacy Platform
-            </div>
-            <h1>Your Family&apos;s<br /><em>Secure Life Vault</em></h1>
-            <p className="sd-hero-sub">
-              Secure what matters. Preserve what you cherish. Pass it on with clarity.
-              Everything your family needs — organized, encrypted, always ready.
-            </p>
-            <div className="sd-hero-ctas">
-              <Link href="https://app.soultdigital.com/signup" className="sd-btn-primary">
-                Start Free — No card required
-              </Link>
-              <Link href="#how-it-works" className="sd-btn-ghost">
-                See How It Works
-              </Link>
-            </div>
-            <div className="sd-hero-trust">
-              <span className="sd-hero-trust-item">Free to start</span>
-              <span className="sd-hero-trust-item">AES-256 encrypted</span>
-              <span className="sd-hero-trust-item">Trusted by 10,000+ families</span>
-            </div>
-          </div>
-
-          <div className="sd-vault-wrap">
-            <div className="sd-vault-glow" />
-            <div className="sd-vault">
-              {["🗄️","📜","🏥","💰","🎙️","🔒","🏠","👨‍👩‍👧","📋"].map((icon, i) => (
-                <div key={i} className={`sd-vault-cell${[1,4,7].includes(i) ? " highlight" : ""}`}>
-                  {icon}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── Hero Carousel ── */}
+      <HeroCarousel />
 
       {/* ── Promo strip ── */}
       {promo && (

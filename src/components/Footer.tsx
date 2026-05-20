@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -58,7 +59,9 @@ export default function Footer() {
       <footer className="sd-footer">
         <div className="sd-footer-inner">
           <div className="sd-footer-brand">
-            <div className="sd-footer-logo">Soult<span>Digital</span></div>
+            <div className="sd-footer-logo">
+              <Image src="/soult-logo.png" alt="Soult" width={100} height={36} style={{ objectFit: "contain" }} />
+            </div>
             <p className="sd-footer-tagline">
               Your Family's Secure Life Vault. Organize assets, documents, memories, and health wishes — all in one place.
             </p>

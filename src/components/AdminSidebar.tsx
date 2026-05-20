@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const NAV = [
@@ -49,7 +50,7 @@ export default function AdminSidebar() {
 
       <aside className="adm-sidebar">
         <div className="adm-logo">
-          Soult<span>Digital</span>
+          <Image src="/soult-logo.png" alt="Soult" width={90} height={32} style={{ objectFit: "contain", display: "block" }} />
           <div className="adm-logo-sub">Admin Console</div>
         </div>
 
