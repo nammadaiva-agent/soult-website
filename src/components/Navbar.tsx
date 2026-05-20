@@ -62,14 +62,14 @@ export default function Navbar() {
         .sd-inner {
           max-width: 1280px; margin: 0 auto;
           padding: 0 32px; height: 72px;
-          display: flex; align-items: center; gap: 32px;
+          display: flex; align-items: center; gap: 0;
         }
         .sd-logo { text-decoration: none; flex-shrink: 0; display: flex; align-items: center; }
 
-        /* Desktop links */
+        /* Desktop links — centred between logo and CTAs */
         .sd-nav-links {
           display: flex; align-items: center; gap: 2px;
-          list-style: none; margin: 0; padding: 0;
+          list-style: none; margin: 0 auto; padding: 0;
         }
         .sd-link {
           font-size: 13px; font-weight: 500; letter-spacing: 0.03em;
@@ -168,7 +168,7 @@ export default function Navbar() {
         .sd-mega-footer-link:hover { color: #301C1A; }
 
         /* CTAs */
-        .sd-ctas { display: flex; gap: 10px; margin-left: auto; flex-shrink: 0; }
+        .sd-ctas { display: flex; gap: 10px; flex-shrink: 0; }
         .sd-btn-outline {
           font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
           text-transform: uppercase; color: var(--gold);
