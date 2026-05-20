@@ -281,12 +281,6 @@ export default function HeroCarousel() {
               <Link href={slide.cta.href} className="hc-btn-gold">{slide.cta.label}</Link>
               <Link href={slide.ghost.href} className="hc-btn-ghost">{slide.ghost.label}</Link>
             </div>
-            <div className="hc-trust">
-              <span className="hc-trust-item">Free to start</span>
-              <span className="hc-trust-item">AES-256 encrypted</span>
-              <span className="hc-trust-item">10,000+ families</span>
-            </div>
-
             {/* Controls */}
             <div className="hc-indicators">
               {SLIDES.map((_, i) => (
@@ -297,7 +291,6 @@ export default function HeroCarousel() {
                   aria-label={`Slide ${i + 1}`}
                 />
               ))}
-              <span className="hc-slide-num">{String(active + 1).padStart(2, "0")} / {String(SLIDES.length).padStart(2, "0")}</span>
               <div className="hc-arrows">
                 <button className="hc-arrow" onClick={prev} aria-label="Previous">‹</button>
                 <button className="hc-arrow" onClick={next} aria-label="Next">›</button>
