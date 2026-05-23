@@ -298,7 +298,7 @@ export default function Navbar() {
                     </div>
                   </div>
                   <div className="sd-mega-footer">
-                    <Link href="https://app.soultdigital.com/signup" className="sd-mega-footer-cta" onClick={() => setOpenDrop(null)}>Get Started Free</Link>
+                    <Link href="/get-started" className="sd-mega-footer-cta" onClick={() => setOpenDrop(null)}>Get Started Free</Link>
                     <Link href="/pricing" className="sd-mega-footer-link" onClick={() => setOpenDrop(null)}>View pricing →</Link>
                     <Link href="/blog" className="sd-mega-footer-link" onClick={() => setOpenDrop(null)}>Read guides →</Link>
                   </div>
@@ -333,7 +333,7 @@ export default function Navbar() {
                     </div>
                   </div>
                   <div className="sd-mega-footer">
-                    <Link href="https://app.soultdigital.com/signup" className="sd-mega-footer-cta" onClick={() => setOpenDrop(null)}>Get Started Free</Link>
+                    <Link href="/get-started" className="sd-mega-footer-cta" onClick={() => setOpenDrop(null)}>Get Started Free</Link>
                     <Link href="/blog" className="sd-mega-footer-link" onClick={() => setOpenDrop(null)}>Read our blog →</Link>
                   </div>
                 </div>
@@ -365,7 +365,7 @@ export default function Navbar() {
               </div>
             </div>
             <Link href="/vault" className="sd-btn-outline">My Vault</Link>
-            <Link href="https://app.soultdigital.com/signup" className="sd-btn-gold">Get Started Free</Link>
+            <Link href="/get-started" className="sd-btn-gold">Get Started Free</Link>
           </div>
 
           <button className="sd-hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
@@ -411,7 +411,7 @@ export default function Navbar() {
         </Link>
         <div className="sd-mob-btns">
           <Link href="/vault" className="sd-btn-outline" style={{ textAlign: "center" }}>My Vault</Link>
-          <Link href="https://app.soultdigital.com/signup" className="sd-btn-gold" style={{ textAlign: "center" }}>Get Started Free</Link>
+          <Link href="/get-started" className="sd-btn-gold" style={{ textAlign: "center" }}>Get Started Free</Link>
         </div>
       </div>
     </>
