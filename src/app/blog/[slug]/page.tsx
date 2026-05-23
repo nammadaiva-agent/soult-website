@@ -173,7 +173,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="bp-cta-band">
             <h3 className="bp-cta-h">Ready to secure your family&apos;s future?</h3>
             <p className="bp-cta-p">Start your free Life Vault today. No credit card required.</p>
-            <Link href="https://app.soultdigital.com/signup" style={{
+            <Link href="/get-started" style={{
               fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase",
               color: "#301C1A", background: "var(--gold)", padding: "12px 28px", borderRadius: "4px",
               textDecoration: "none",

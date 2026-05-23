@@ -335,7 +335,7 @@ export default function LegacyChecklist() {
             </div>
           </div>
 
-          <Link href="https://app.soultdigital.com/signup" className="lc-cta">
+          <Link href="/get-started" className="lc-cta">
             Secure Everything in Soult — Free
           </Link>
         </div>

@@ -270,7 +270,7 @@ export default function FAQPage() {
               <h2 className="faq-cta-h">Still have a question?</h2>
               <p className="faq-cta-p">Email us at support@soultdigital.com — we reply within 24 hours.</p>
             </div>
-            <Link href="https://app.soultdigital.com/signup" className="faq-cta-btn">
+            <Link href="/get-started" className="faq-cta-btn">
               Start for free
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                 <path d="M2.5 7h9M8 3.5L11.5 7 8 10.5" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>

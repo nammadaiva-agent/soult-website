@@ -585,7 +585,7 @@ export default async function HomePage() {
             </div>
           </div>
           <div className="sd-midcta-ctas">
-            <Link href="https://app.soultdigital.com/signup" className="sd-midcta-btn-primary">
+            <Link href="/get-started" className="sd-midcta-btn-primary">
               Create My Vault — Free
             </Link>
             <Link href="/pricing" className="sd-midcta-btn-ghost">
