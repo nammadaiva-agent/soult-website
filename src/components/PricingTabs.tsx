@@ -11,7 +11,7 @@ const B2C_PLANS = [
     originalPrice: 599,
     storage: "100 MB",
     cta: "Begin with Foundation",
-    ctaUrl: "https://app.soultdigital.com/signup",
+    ctaUrl: "/get-started",
     highlighted: false,
     note: "Limited-time introductory access",
     features: [
@@ -28,7 +28,7 @@ const B2C_PLANS = [
     originalPrice: 2999,
     storage: "2 GB",
     cta: "Choose Family",
-    ctaUrl: "https://app.soultdigital.com/signup",
+    ctaUrl: "/get-started",
     highlighted: false,
     note: "A strong starting point for most homes",
     features: [
@@ -46,7 +46,7 @@ const B2C_PLANS = [
     storage: "5 GB",
     badge: "Most popular",
     cta: "Build My Legacy",
-    ctaUrl: "https://app.soultdigital.com/signup",
+    ctaUrl: "/get-started",
     highlighted: true,
     note: "Best balance of protection and clarity",
     features: [
@@ -64,7 +64,7 @@ const B2C_PLANS = [
     originalPrice: 7999,
     storage: "10 GB",
     cta: "Choose Dynasty",
-    ctaUrl: "https://app.soultdigital.com/signup",
+    ctaUrl: "/get-started",
     highlighted: false,
     note: "Built for longer horizons",
     features: [
