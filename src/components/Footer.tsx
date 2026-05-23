@@ -98,7 +98,8 @@ export default function Footer() {
         .sd-footer-socials {
           display: flex; align-items: center; gap: 0;
           margin-top: 24px;
-          background: #fff;
+          background: rgba(200,155,60,0.08);
+          border: 1.5px solid rgba(200,155,60,0.22);
           border-radius: 12px;
           padding: 14px 20px;
           width: fit-content;
@@ -107,14 +108,14 @@ export default function Footer() {
           display: inline-flex; align-items: center; flex-direction: column; gap: 7px;
           padding: 0 20px;
           text-decoration: none;
-          border-right: 1px solid rgba(43,29,22,0.1);
+          border-right: 1px solid rgba(200,155,60,0.18);
           transition: opacity 0.2s;
         }
         .sd-footer-social-link:last-child { border-right: none; }
-        .sd-footer-social-link:hover { opacity: 0.75; }
+        .sd-footer-social-link:hover { opacity: 0.7; }
         .sd-footer-social-name {
-          font-size: 11px; font-weight: 700; color: #2B1D16;
-          letter-spacing: 0.04em; text-transform: uppercase;
+          font-size: 11px; font-weight: 700; color: rgba(200,155,60,0.75);
+          letter-spacing: 0.06em; text-transform: uppercase;
         }
         .sd-footer-bottom {
           max-width: 1280px; margin: 40px auto 0;
@@ -240,22 +241,22 @@ export default function Footer() {
                       <stop offset="100%" stopColor="#bc1888"/>
                     </linearGradient>
                   </defs>
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad)"/>
-                  <circle cx="12" cy="12" r="4" stroke="url(#ig-grad)"/>
-                  <circle cx="17.5" cy="6.5" r="0.9" fill="url(#ig-grad)" stroke="none"/>
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="#C89B3C"/>
+                  <circle cx="12" cy="12" r="4" stroke="#C89B3C"/>
+                  <circle cx="17.5" cy="6.5" r="0.9" fill="#C89B3C" stroke="none"/>
                 </svg>
                 <span className="sd-footer-social-name">Instagram</span>
               </a>
               {/* Facebook */}
               <a href="https://www.facebook.com/soultdigital" target="_blank" rel="noopener noreferrer" className="sd-footer-social-link" aria-label="Soult on Facebook">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1877F2" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C89B3C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                 </svg>
                 <span className="sd-footer-social-name">Facebook</span>
               </a>
               {/* LinkedIn */}
               <a href="https://www.linkedin.com/company/soult-digital" target="_blank" rel="noopener noreferrer" className="sd-footer-social-link" aria-label="Soult on LinkedIn">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0A66C2" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C89B3C" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
                   <rect x="2" y="9" width="4" height="12"/>
                   <circle cx="4" cy="4" r="2"/>
