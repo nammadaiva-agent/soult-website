@@ -4,6 +4,53 @@ import MemoryCatalog from "@/components/MemoryCatalog";
 export const metadata: Metadata = {
   title: "Life Legacy & Journaling Vault — Wisdom & Spiritual | Soult",
   description: "Before this moment fades — write one line. Capture memories, voice notes, and wisdom for the people you love.",
+  alternates: { canonical: "https://www.soultdigital.com/wisdom-spiritual" },
+  openGraph: {
+    title: "Life Legacy & Journaling — Soult Digital",
+    description: "Capture memories, personal wisdom, spiritual beliefs, and life lessons for the people you love. A vault that preserves more than assets.",
+    url: "https://www.soultdigital.com/wisdom-spiritual",
+    type: "website",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.soultdigital.com/wisdom-spiritual",
+      url: "https://www.soultdigital.com/wisdom-spiritual",
+      name: "Life Legacy, Journaling & Wisdom Vault — Soult Digital",
+      description: "Capture memories, voice notes, personal wisdom, and spiritual beliefs for the people you love — stored privately in your Soult vault.",
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.soultdigital.com" },
+          { "@type": "ListItem", position: 2, name: "Wisdom & Legacy", item: "https://www.soultdigital.com/wisdom-spiritual" },
+        ],
+      },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What kind of memories can I store in Soult?",
+          acceptedAnswer: { "@type": "Answer", text: "Soult lets you store written memories, voice notes, life lessons, personal wisdom, spiritual beliefs, family stories, and journals — anything you want to preserve for the people you love." },
+        },
+        {
+          "@type": "Question",
+          name: "Can I record voice messages for my family in Soult?",
+          acceptedAnswer: { "@type": "Answer", text: "Yes. Soult supports voice notes so you can leave personal messages, stories, or guidance in your own voice for your loved ones." },
+        },
+        {
+          "@type": "Question",
+          name: "Who can see my memories and journals in Soult?",
+          acceptedAnswer: { "@type": "Answer", text: "Only you can see your memories and journals. They are AES-256 encrypted and only accessible by people you explicitly designate — such as executors — at the appropriate time." },
+        },
+      ],
+    },
+  ],
 };
 
 const CAPTURE_TYPES = [
@@ -120,6 +167,7 @@ const PRIVACY = [
 export default function WisdomSpiritualPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <style>{`
         .ws { font-family: 'Outfit', sans-serif; }
 

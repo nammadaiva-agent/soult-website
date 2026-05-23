@@ -19,6 +19,96 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
+const pricingJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.soultdigital.com/pricing",
+      url: "https://www.soultdigital.com/pricing",
+      name: "Pricing — Soult Digital",
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.soultdigital.com" },
+          { "@type": "ListItem", position: 2, name: "Pricing", item: "https://www.soultdigital.com/pricing" },
+        ],
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: "Soult Digital Life Vault",
+      applicationCategory: "LifestyleApplication",
+      offers: [
+        {
+          "@type": "Offer",
+          name: "Foundation",
+          price: "0",
+          priceCurrency: "INR",
+          description: "Free plan — 3 assets, 5 memories, 5 loved ones, 1 executor, 100 MB storage.",
+          url: "https://www.soultdigital.com/pricing",
+          availability: "https://schema.org/InStock",
+        },
+        {
+          "@type": "Offer",
+          name: "Family",
+          price: "1999",
+          priceCurrency: "INR",
+          description: "₹1,999/year — 20 assets, 20 memories, 20 loved ones, 3 executors, 2 GB storage.",
+          url: "https://www.soultdigital.com/pricing",
+          availability: "https://schema.org/InStock",
+          priceValidUntil: "2026-08-31",
+        },
+        {
+          "@type": "Offer",
+          name: "Legacy",
+          price: "2999",
+          priceCurrency: "INR",
+          description: "₹2,999/year — 30 assets, 30 memories, 5 executors, 5 GB storage. Most popular plan.",
+          url: "https://www.soultdigital.com/pricing",
+          availability: "https://schema.org/InStock",
+          priceValidUntil: "2026-08-31",
+        },
+        {
+          "@type": "Offer",
+          name: "Dynasty",
+          price: "4999",
+          priceCurrency: "INR",
+          description: "₹4,999/year — Unlimited assets, memories, loved ones, 7 executors, 10 GB storage.",
+          url: "https://www.soultdigital.com/pricing",
+          availability: "https://schema.org/InStock",
+          priceValidUntil: "2026-08-31",
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Is Soult free to use?",
+          acceptedAnswer: { "@type": "Answer", text: "Yes. The Foundation plan is free and includes 3 assets, 5 memories, 5 loved ones, 1 executor, and 100 MB storage." },
+        },
+        {
+          "@type": "Question",
+          name: "What is included in the Soult Legacy plan?",
+          acceptedAnswer: { "@type": "Answer", text: "The Legacy plan is ₹2,999/year and includes 30 assets, 30 memories, 30 loved ones, 18 wallet items, 50 passwords, 5 executors, 10 Wills & POAs, 5 GB storage, and priority support." },
+        },
+        {
+          "@type": "Question",
+          name: "Are Soult prices inclusive of GST?",
+          acceptedAnswer: { "@type": "Answer", text: "No. All Soult prices are exclusive of 18% GST. GST is added at checkout." },
+        },
+        {
+          "@type": "Question",
+          name: "Does Soult offer enterprise plans?",
+          acceptedAnswer: { "@type": "Answer", text: "Yes. Soult offers Enterprise plans for organisations wanting to provide digital life vault access as an employee wellbeing benefit, and Channel Partner plans for advisors, wealth managers, and CAs." },
+        },
+      ],
+    },
+  ],
+};
+
 const UNIVERSAL_FEATURES = [
   {
     ghost: "VITALS",
@@ -363,6 +453,7 @@ export default async function PricingPage() {
         }
       `}</style>
 
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }} />
       <div className="pr-page">
 
         {/* ── Hero ── */}

@@ -95,6 +95,23 @@ export default function Footer() {
           transition: color 0.2s;
         }
         .sd-footer-col a:hover { color: var(--beige); }
+        .sd-footer-socials {
+          display: flex; gap: 10px; margin-top: 20px;
+        }
+        .sd-footer-social-link {
+          width: 36px; height: 36px; border-radius: 8px;
+          display: flex; align-items: center; justify-content: center;
+          border: 1px solid rgba(200,155,60,0.25);
+          background: rgba(200,155,60,0.06);
+          color: rgba(200,155,60,0.7);
+          text-decoration: none;
+          transition: border-color 0.2s, background 0.2s, color 0.2s;
+        }
+        .sd-footer-social-link:hover {
+          border-color: rgba(200,155,60,0.6);
+          background: rgba(200,155,60,0.14);
+          color: #C89B3C;
+        }
         .sd-footer-bottom {
           max-width: 1280px; margin: 40px auto 0;
           padding-top: 24px; border-top: 1px solid var(--border);
@@ -206,6 +223,30 @@ export default function Footer() {
             <p className="sd-footer-tagline">
               India&apos;s first digital legacy vault. Organise assets, preserve family memories, and ensure life continuity — born in Mangaluru, built for every Indian family.
             </p>
+            <div className="sd-footer-socials">
+              {/* Instagram */}
+              <a href="https://www.instagram.com/soultdigital" target="_blank" rel="noopener noreferrer" className="sd-footer-social-link" aria-label="Soult on Instagram">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/>
+                </svg>
+              </a>
+              {/* Facebook */}
+              <a href="https://www.facebook.com/soultdigital" target="_blank" rel="noopener noreferrer" className="sd-footer-social-link" aria-label="Soult on Facebook">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+              </a>
+              {/* LinkedIn */}
+              <a href="https://www.linkedin.com/company/soultdigital" target="_blank" rel="noopener noreferrer" className="sd-footer-social-link" aria-label="Soult on LinkedIn">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect x="2" y="9" width="4" height="12"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
+              </a>
+            </div>
           </div>
 
           <div className="sd-footer-col">

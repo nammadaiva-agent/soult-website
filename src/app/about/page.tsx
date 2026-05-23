@@ -2,13 +2,61 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Us — Soult Digital",
-  description: "Born in Hyderabad, built in Mangaluru. The story behind India's most trusted digital life vault.",
+  title: "About Us — Soult Digital | India's Digital Life Vault",
+  description: "Born in Hyderabad, built in Mangaluru. The story behind India's first digital life vault — protecting family assets, memories, and legacy.",
+  alternates: { canonical: "https://www.soultdigital.com/about" },
+  openGraph: {
+    title: "About Soult Digital — India's First Digital Life Vault",
+    description: "The story behind Soult — why we built India's first digital life vault and the team protecting your family's legacy.",
+    url: "https://www.soultdigital.com/about",
+    type: "website",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.soultdigital.com/about",
+      url: "https://www.soultdigital.com/about",
+      name: "About Soult Digital — India's First Digital Life Vault",
+      description: "The founding story, team, and mission behind Soult Digital — India's first digital life vault.",
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.soultdigital.com" },
+          { "@type": "ListItem", position: 2, name: "About", item: "https://www.soultdigital.com/about" },
+        ],
+      },
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://www.soultdigital.com/#organization",
+      name: "Soult Digital Private Limited",
+      url: "https://www.soultdigital.com",
+      logo: "https://www.soultdigital.com/logo.png",
+      foundingDate: "2024",
+      foundingLocation: {
+        "@type": "Place",
+        name: "Mangaluru, Karnataka, India",
+      },
+      description: "India's first digital life vault — organise assets, preserve family memories, and ensure life continuity.",
+      areaServed: "IN",
+      knowsAbout: ["Digital legacy", "Estate planning India", "Life vault", "Family continuity", "Asset management"],
+      founder: [
+        { "@type": "Person", name: "Sanketh", jobTitle: "Co-Founder", worksFor: { "@id": "https://www.soultdigital.com/#organization" } },
+        { "@type": "Person", name: "Mohammed", jobTitle: "Co-Founder", worksFor: { "@id": "https://www.soultdigital.com/#organization" } },
+        { "@type": "Person", name: "Durga Charan", jobTitle: "Co-Founder", worksFor: { "@id": "https://www.soultdigital.com/#organization" } },
+      ],
+    },
+  ],
 };
 
 export default function AboutPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <style>{`
         .ab-page { font-family: 'Outfit', sans-serif; background: #FDFAF6; color: #2B1D16; }
 

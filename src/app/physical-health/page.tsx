@@ -3,6 +3,53 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Living Will India, Organ Donation & Medical Directives — Soult",
   description: "Two distinct, profound decisions. Define your end-of-life medical care and register as an organ donor — clarity in the most difficult moments.",
+  alternates: { canonical: "https://www.soultdigital.com/physical-health" },
+  openGraph: {
+    title: "Living Will & Organ Donation — Soult Digital",
+    description: "Define your end-of-life medical care and register as an organ donor. Store medical directives securely in your Soult vault.",
+    url: "https://www.soultdigital.com/physical-health",
+    type: "website",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.soultdigital.com/physical-health",
+      url: "https://www.soultdigital.com/physical-health",
+      name: "Living Will, Organ Donation & Medical Directives — Soult Digital",
+      description: "Store your living will, organ donation preferences, and medical directives securely in your Soult digital vault.",
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.soultdigital.com" },
+          { "@type": "ListItem", position: 2, name: "Medical Wishes", item: "https://www.soultdigital.com/physical-health" },
+        ],
+      },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Can I store a living will in Soult?",
+          acceptedAnswer: { "@type": "Answer", text: "Yes. Soult allows you to document your end-of-life medical care preferences, including life-sustaining treatment decisions, pain management wishes, and DNR (Do Not Resuscitate) instructions." },
+        },
+        {
+          "@type": "Question",
+          name: "How do I register as an organ donor in India using Soult?",
+          acceptedAnswer: { "@type": "Answer", text: "Soult lets you record your organ donation intent and preferences so your family and medical team have clear guidance in emergency situations." },
+        },
+        {
+          "@type": "Question",
+          name: "Is my medical information private in Soult?",
+          acceptedAnswer: { "@type": "Answer", text: "Yes. All medical data is AES-256 encrypted and visible only to you and people you explicitly grant access to, such as executors or emergency contacts." },
+        },
+      ],
+    },
+  ],
 };
 
 const LIVING_WILL_FEATURES = [
@@ -204,6 +251,7 @@ const TESTIMONIALS = [
 export default function PhysicalHealthPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <style>{`
         .ph { font-family: 'Outfit', sans-serif; }
 

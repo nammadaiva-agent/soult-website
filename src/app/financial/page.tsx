@@ -5,6 +5,53 @@ import AssetCategories from "@/components/AssetCategories";
 export const metadata: Metadata = {
   title: "Financial Legacy Vault — Track Assets, Will & Estate Planning | Soult India",
   description: "Your SIP for Europe. Your FD for your son's tournament. The property for your daughter's future. One place, privately held.",
+  alternates: { canonical: "https://www.soultdigital.com/financial" },
+  openGraph: {
+    title: "Financial Legacy Vault — Soult Digital",
+    description: "Track all your assets, investments, property, and important documents in one encrypted vault. Estate planning made simple for Indian families.",
+    url: "https://www.soultdigital.com/financial",
+    type: "website",
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.soultdigital.com/financial",
+      url: "https://www.soultdigital.com/financial",
+      name: "Financial Legacy Vault — Soult Digital",
+      description: "Track assets, investments, property, Wills, and estate planning documents in one private vault.",
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.soultdigital.com" },
+          { "@type": "ListItem", position: 2, name: "Financial Legacy", item: "https://www.soultdigital.com/financial" },
+        ],
+      },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What financial assets can I store in Soult?",
+          acceptedAnswer: { "@type": "Answer", text: "Soult supports 60+ asset categories including bank accounts, mutual funds, fixed deposits, stocks, property, gold, heirlooms, insurance policies, and more." },
+        },
+        {
+          "@type": "Question",
+          name: "Can I store my Will in Soult?",
+          acceptedAnswer: { "@type": "Answer", text: "Yes. Soult allows you to store Wills, Powers of Attorney, and other legal documents securely encrypted in your vault." },
+        },
+        {
+          "@type": "Question",
+          name: "Is my financial information safe in Soult?",
+          acceptedAnswer: { "@type": "Answer", text: "Yes. All data is encrypted with AES-256 and stored on AWS Mumbai servers. Only you can access it via your verified phone number and MPIN." },
+        },
+      ],
+    },
+  ],
 };
 
 const STEPS = [
@@ -70,6 +117,7 @@ const PREVIEW_CATS = ["Bank Accounts", "Gold & Jewellery", "Real Estate", "Insur
 export default function FinancialPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <style>{`
         .fp { font-family: 'Outfit', sans-serif; }
 

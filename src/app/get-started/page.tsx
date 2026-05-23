@@ -14,9 +14,56 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.soultdigital.com/get-started",
+      url: "https://www.soultdigital.com/get-started",
+      name: "Get Started — Create Your Soult Digital Life Vault",
+      description: "New to Soult? Download the app and create your vault in 3 steps. Already a member? Manage your plan via our secure web portal.",
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://www.soultdigital.com" },
+          { "@type": "ListItem", position: 2, name: "Get Started", item: "https://www.soultdigital.com/get-started" },
+        ],
+      },
+    },
+    {
+      "@type": "HowTo",
+      name: "How to create a Soult Digital Life Vault",
+      description: "Set up your Soult vault in 3 steps on Android or iOS. Protect your assets, documents, and memories.",
+      totalTime: "PT5M",
+      step: [
+        {
+          "@type": "HowToStep",
+          position: 1,
+          name: "Download the app",
+          text: "Download the Soult app from Google Play or the Apple App Store. Free to download on Android and iOS.",
+        },
+        {
+          "@type": "HowToStep",
+          position: 2,
+          name: "Verify phone + email",
+          text: "Receive an OTP on your mobile number, then a second OTP on your email for two-step identity confirmation.",
+        },
+        {
+          "@type": "HowToStep",
+          position: 3,
+          name: "Set your MPIN and you're in",
+          text: "Add a 4-digit MPIN and a security question. Your vault is ready — start adding assets, memories, and loved ones.",
+        },
+      ],
+    },
+  ],
+};
+
 export default function GetStartedPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&display=swap');
 
@@ -29,34 +76,26 @@ export default function GetStartedPage() {
         /* ── Hero ── */
         .gs-hero {
           background: #F5F0E6;
-          padding: 72px 32px 80px;
+          padding: 56px 32px 48px;
           text-align: center;
           position: relative;
           overflow: hidden;
-        }
-        .gs-hero::before {
-          content: '';
-          position: absolute; inset: 0;
-          background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(200,155,60,0.08) 0%, transparent 65%);
-          pointer-events: none;
         }
         .gs-eyebrow {
           font-size: 10px; font-weight: 800; letter-spacing: 0.24em;
           text-transform: uppercase; color: #C89B3C;
           display: flex; align-items: center; justify-content: center; gap: 12px;
-          margin-bottom: 20px;
+          margin-bottom: 16px;
         }
         .gs-eyebrow-line { width: 28px; height: 1px; background: #C89B3C; }
         .gs-h1 {
-          font-family: 'Cormorant Garamond', Georgia, serif;
-          font-size: clamp(34px, 5vw, 60px); font-weight: 700;
-          color: #2B1D16; letter-spacing: -0.02em; line-height: 1.1;
-          margin-bottom: 20px;
+          font-size: clamp(22px, 2.8vw, 34px); font-weight: 800;
+          color: #2B1D16; letter-spacing: -0.02em; line-height: 1.25;
+          margin-bottom: 12px;
         }
-        .gs-h1 em { color: #9B5E3A; font-style: italic; }
         .gs-lead {
-          font-size: 16px; color: rgba(43,29,22,0.58);
-          max-width: 540px; margin: 0 auto; line-height: 1.75;
+          font-size: 15px; color: rgba(43,29,22,0.55);
+          max-width: 500px; margin: 0 auto; line-height: 1.7;
         }
 
         /* ── Cards wrapper ── */
@@ -83,7 +122,7 @@ export default function GetStartedPage() {
           box-shadow: 0 4px 40px rgba(43,29,22,0.09);
         }
         .gs-card-head.light {
-          background: linear-gradient(135deg, #F5ECD8 0%, #EDE6D8 100%);
+          background: #fff;
           padding: 32px 36px 28px;
           border-bottom: 1px solid rgba(43,29,22,0.07);
         }
@@ -283,9 +322,7 @@ export default function GetStartedPage() {
             Get Started
             <span className="gs-eyebrow-line" />
           </div>
-          <h1 className="gs-h1">
-            Welcome to Soult — Start protecting what <em>matters most</em>.
-          </h1>
+          <h1 className="gs-h1">Welcome to Soult — Start protecting what matters most.</h1>
           <p className="gs-lead">
             Whether you&apos;re new to Soult or already have a vault — you&apos;re in the right place. Choose your path below to continue securing your legacy.
           </p>
