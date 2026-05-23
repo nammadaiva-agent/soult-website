@@ -28,8 +28,8 @@ export default function GetStartedPage() {
 
         /* ── Hero ── */
         .gs-hero {
-          background: linear-gradient(150deg, #1E1208 0%, #301C1A 55%, #2B1D16 100%);
-          padding: 80px 32px 100px;
+          background: #F5F0E6;
+          padding: 72px 32px 80px;
           text-align: center;
           position: relative;
           overflow: hidden;
@@ -37,7 +37,7 @@ export default function GetStartedPage() {
         .gs-hero::before {
           content: '';
           position: absolute; inset: 0;
-          background: radial-gradient(ellipse 60% 50% at 50% 110%, rgba(200,155,60,0.1) 0%, transparent 65%);
+          background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(200,155,60,0.08) 0%, transparent 65%);
           pointer-events: none;
         }
         .gs-eyebrow {
@@ -50,18 +50,18 @@ export default function GetStartedPage() {
         .gs-h1 {
           font-family: 'Cormorant Garamond', Georgia, serif;
           font-size: clamp(34px, 5vw, 60px); font-weight: 700;
-          color: #F5ECD8; letter-spacing: -0.02em; line-height: 1.1;
+          color: #2B1D16; letter-spacing: -0.02em; line-height: 1.1;
           margin-bottom: 20px;
         }
-        .gs-h1 em { color: #D4A843; font-style: italic; }
+        .gs-h1 em { color: #9B5E3A; font-style: italic; }
         .gs-lead {
-          font-size: 16px; color: rgba(245,236,216,0.6);
+          font-size: 16px; color: rgba(43,29,22,0.58);
           max-width: 540px; margin: 0 auto; line-height: 1.75;
         }
 
-        /* ── Cards wrapper — overlaps hero bottom ── */
+        /* ── Cards wrapper ── */
         .gs-cards {
-          max-width: 1100px; margin: -56px auto 0;
+          max-width: 1100px; margin: 0 auto;
           padding: 0 32px 80px;
           display: grid;
           grid-template-columns: 1fr 1fr;
