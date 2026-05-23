@@ -186,7 +186,7 @@ export default function PricingTabs({ tab, setTab, dark = false }: PricingTabsPr
       `}</style>
       {/* ── Toggle ──────────────────────────────────────────────────────── */}
       <div style={{
-        display: "flex", justifyContent: "center", margin: "0 0 40px",
+        display: "flex", justifyContent: "center", margin: "48px 0 40px",
       }}>
         <div style={{
           display: "inline-flex", alignItems: "center",
