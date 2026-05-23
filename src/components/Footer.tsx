@@ -101,17 +101,17 @@ export default function Footer() {
         .sd-footer-social-link {
           display: inline-flex; align-items: center; gap: 10px;
           padding: 11px 18px; border-radius: 10px;
-          border: 1.5px solid rgba(245,236,216,0.18);
-          background: rgba(245,236,216,0.05);
+          border: 1.5px solid rgba(245,236,216,0.15);
+          background: #fff;
           text-decoration: none;
-          transition: border-color 0.2s, background 0.2s;
+          transition: border-color 0.2s, box-shadow 0.2s;
         }
         .sd-footer-social-link:hover {
-          border-color: rgba(200,155,60,0.55);
-          background: rgba(200,155,60,0.1);
+          border-color: rgba(200,155,60,0.5);
+          box-shadow: 0 4px 16px rgba(0,0,0,0.2);
         }
         .sd-footer-social-name {
-          font-size: 13px; font-weight: 700; color: rgba(245,236,216,0.85);
+          font-size: 13px; font-weight: 700; color: #2B1D16;
           letter-spacing: 0.02em;
         }
         .sd-footer-bottom {
