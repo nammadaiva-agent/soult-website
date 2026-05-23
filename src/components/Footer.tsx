@@ -254,7 +254,7 @@ export default function Footer() {
                 <span className="sd-footer-social-name">Facebook</span>
               </a>
               {/* LinkedIn */}
-              <a href="https://www.linkedin.com/company/soultdigital" target="_blank" rel="noopener noreferrer" className="sd-footer-social-link" aria-label="Soult on LinkedIn">
+              <a href="https://www.linkedin.com/company/soult-digital" target="_blank" rel="noopener noreferrer" className="sd-footer-social-link" aria-label="Soult on LinkedIn">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#0A66C2" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
                   <rect x="2" y="9" width="4" height="12"/>
