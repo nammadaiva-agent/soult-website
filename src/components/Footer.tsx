@@ -229,7 +229,7 @@ export default function Footer() {
             </p>
             <div className="sd-footer-socials">
               {/* Instagram */}
-              <a href="https://www.instagram.com/soultdigital" target="_blank" rel="noopener noreferrer" className="sd-footer-social-link" aria-label="Soult on Instagram">
+              <a href="https://www.instagram.com/soult_digital" target="_blank" rel="noopener noreferrer" className="sd-footer-social-link" aria-label="Soult on Instagram">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                   <defs>
                     <linearGradient id="ig-grad" x1="0" y1="24" x2="24" y2="0" gradientUnits="userSpaceOnUse">
