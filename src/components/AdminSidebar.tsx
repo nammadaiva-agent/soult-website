@@ -6,9 +6,10 @@ import { usePathname } from "next/navigation";
 const NAV = [
   { href: "/admin", label: "Dashboard", icon: "⊞" },
   { href: "/admin/pricing", label: "Pricing Plans", icon: "₹" },
-  { href: "/admin/announcements", label: "Announcements", icon: "📣" },
-  { href: "/admin/promotions", label: "Promotions", icon: "🎯" },
-  { href: "/admin/blog", label: "Blog & Articles", icon: "✍️" },
+  { href: "/admin/announcements", label: "Announcements", icon: "◈" },
+  { href: "/admin/promotions", label: "Promotions", icon: "◈" },
+  { href: "/admin/blog", label: "Blog & Articles", icon: "◈" },
+  { href: "/admin/hero-slides", label: "Hero Slides", icon: "◈" },
 ];
 
 export default function AdminSidebar() {
@@ -19,9 +20,9 @@ export default function AdminSidebar() {
       <style>{`
         .adm-sidebar {
           width: 240px; flex-shrink: 0;
-          background: #301C1A; min-height: 100vh;
+          background: #301C1A; min-height: calc(100vh - 76px);
           display: flex; flex-direction: column;
-          position: sticky; top: 0; height: 100vh;
+          position: sticky; top: 76px; height: calc(100vh - 76px);
         }
         .adm-logo {
           padding: 24px 20px; border-bottom: 1px solid rgba(215,181,109,0.15);

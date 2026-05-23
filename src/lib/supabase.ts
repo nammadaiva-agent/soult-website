@@ -89,6 +89,22 @@ export type Promotion = {
   created_at: string
 }
 
+export type HeroSlide = {
+  id: string
+  image_url: string | null
+  image_position: string
+  badge: string | null
+  headline: string
+  sub_text: string | null
+  cta_label: string | null
+  cta_url: string | null
+  ghost_label: string | null
+  ghost_url: string | null
+  sort_order: number
+  active: boolean
+  created_at: string
+}
+
 export type BlogPost = {
   id: string
   title: string

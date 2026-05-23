@@ -1,7 +1,39 @@
 import { supabase } from "@/lib/supabase";
 import type { BlogPost } from "@/lib/supabase";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+
+const BASE = "https://www.soultdigital.com";
+
+export async function generateMetadata(
+  { params }: { params: Promise<{ slug: string }> }
+): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+  if (!post) return {};
+  return {
+    title: post.title,
+    description: post.excerpt ?? post.title,
+    alternates: { canonical: `${BASE}/blog/${slug}` },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt ?? post.title,
+      url: `${BASE}/blog/${slug}`,
+      type: "article",
+      publishedTime: post.published_at ?? undefined,
+      authors: post.author ? [post.author] : [],
+      images: post.cover_image ? [{ url: post.cover_image, alt: post.title }] : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt ?? post.title,
+      images: post.cover_image ? [post.cover_image] : [],
+    },
+  };
+}
 
 export const revalidate = 60;
 
@@ -42,8 +74,37 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const post = await getPost(slug);
   if (!post) notFound();
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt ?? post.title,
+    author: { "@type": "Person", name: post.author },
+    publisher: {
+      "@type": "Organization",
+      name: "Soult Digital",
+      url: BASE,
+    },
+    datePublished: post.published_at,
+    image: post.cover_image ?? `${BASE}/og-image.png`,
+    url: `${BASE}/blog/${slug}`,
+    mainEntityOfPage: `${BASE}/blog/${slug}`,
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: BASE },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${BASE}/blog/${slug}` },
+    ],
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <style>{`
         .bp-page { padding-top: 72px; background: var(--bg-primary); min-height: 100vh; }
         .bp-hero {
@@ -101,7 +162,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         <div className="bp-body">
           {post.cover_image
-            ? <img src={post.cover_image} alt={post.title} className="bp-cover" />
+            ? <Image src={post.cover_image} alt={post.title} className="bp-cover" width={800} height={450} style={{ width: "100%", height: "auto" }} />
             : <div className="bp-cover-placeholder">📖</div>
           }
           <div

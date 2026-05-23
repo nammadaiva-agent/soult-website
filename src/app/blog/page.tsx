@@ -1,6 +1,20 @@
 import { supabase } from "@/lib/supabase";
 import type { BlogPost } from "@/lib/supabase";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description:
+    "Guides on digital legacy planning, estate organisation, and protecting what matters most for Indian families.",
+  alternates: { canonical: "https://www.soultdigital.com/blog" },
+  openGraph: {
+    title: "Soult Digital Blog — Legacy Planning Guides",
+    description: "Practical advice on digital legacy, estate planning, financial organisation, and preserving family memories.",
+    url: "https://www.soultdigital.com/blog",
+    type: "website",
+  },
+};
 
 export const revalidate = 60;
 
@@ -18,11 +32,21 @@ function formatDate(iso: string | null) {
   return new Date(iso).toLocaleDateString("en-IN", { year: "numeric", month: "long", day: "numeric" });
 }
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.soultdigital.com" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://www.soultdigital.com/blog" },
+  ],
+};
+
 export default async function BlogPage() {
   const posts = await getPosts();
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <style>{`
         .bl-page { padding-top: 72px; background: var(--bg-primary); min-height: 100vh; }
         .bl-hero { padding: 80px 32px 48px; }

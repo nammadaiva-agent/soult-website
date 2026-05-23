@@ -1,7 +1,22 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import HeroCarousel from "@/components/HeroCarousel";
+import PillarRotator from "@/components/PillarRotator";
+import LegacyChecklist from "@/components/LegacyChecklist";
+import QuickSetup from "@/components/QuickSetup";
+import TrustVault from "@/components/TrustVault";
+import ComparisonTable from "@/components/ComparisonTable";
+import HomeFAQ from "@/components/HomeFAQ";
+import Testimonials from "@/components/Testimonials";
 import { supabase } from "@/lib/supabase";
 import type { PricingPlan, Promotion } from "@/lib/supabase";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://www.soultdigital.com",
+    languages: { "en-IN": "https://www.soultdigital.com", "en": "https://www.soultdigital.com" },
+  },
+};
 
 async function getHeroPromotion(): Promise<Promotion | null> {
   try {
@@ -27,32 +42,59 @@ async function getPricingPreview(): Promise<PricingPlan[]> {
   } catch { return []; }
 }
 
-const FEATURES = [
-  { icon: "🗄️", title: "Asset & Financial Vault", body: "Bank accounts, properties, investments, insurance — documented and organized in one secure place." },
-  { icon: "📜", title: "Will & Legal Documents", body: "Store your will, power of attorney, and legal papers with version history and executor access." },
-  { icon: "🏥", title: "Medical Wishes", body: "Healthcare directives, emergency contacts, allergies and insurance — accessible when it matters most." },
-  { icon: "🎙️", title: "Memory Preservation", body: "Voice notes, stories, letters and family narratives — preserve the soul of your legacy, not just the assets." },
-  { icon: "👨‍👩‍👧", title: "Nominee Management", body: "Define exactly who gets access to what, and when. Guided executor workflows included." },
-  { icon: "🔒", title: "AES-256 Encryption", body: "Military-grade encryption, AWS infrastructure, zero-knowledge architecture. Your data is yours alone." },
-];
 
-const HOW = [
-  { step: "01", title: "Create your vault", body: "Sign up and set up your Life Vault in minutes. Add documents, wishes, and memories at your own pace." },
-  { step: "02", title: "Add nominees", body: "Invite family members or executors with granular permission controls. They only see what you choose, when you choose." },
-  { step: "03", title: "Live with confidence", body: "Your family is protected. Everything is organized. No guesswork, no panic, no lost paperwork." },
-];
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How to set up your Soult Digital Life Vault",
+  description: "Create your secure digital legacy vault in under 60 seconds. Protect your family's future in three simple steps.",
+  totalTime: "PT1H",
+  step: [
+    {
+      "@type": "HowToStep",
+      position: 1,
+      name: "Create your vault",
+      text: "Sign up and define your legacy goals in under a minute. No legal jargon — just you, your family, and what matters most.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 2,
+      name: "Document your assets",
+      text: "Log bank accounts, properties, and important records at your own pace. Encrypted end-to-end. Add a little now, add more anytime.",
+    },
+    {
+      "@type": "HowToStep",
+      position: 3,
+      name: "Assign your executor",
+      text: "Choose a trusted person. They get guided access only when needed. Granular permissions — your executor sees only what you allow.",
+    },
+  ],
+};
 
-const TESTIMONIALS = [
-  { name: "Priya Nair", role: "NRI, Dubai", body: "\"As an NRI, I always worried about what would happen to my India assets if something happened to me. Soult gave me complete peace of mind.\"" },
-  { name: "Rajesh Menon", role: "Chartered Accountant", body: "\"I now recommend Soult to every client. It's the missing piece in most families' financial planning — and the setup takes under an hour.\"" },
-  { name: "Anita Sharma", role: "Business Owner, Mumbai", body: "\"We lost three weeks of work after my father passed because nothing was documented. I made sure my family will never face that.\"" },
-];
+const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "Soult Digital — Your Family's Secure Life Vault",
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["h1", "h2", ".sd-hero-sub", ".sd-cta-p"],
+  },
+  url: "https://www.soultdigital.com",
+};
 
 export default async function HomePage() {
-  const [promo, plans] = await Promise.all([getHeroPromotion(), getPricingPreview()]);
+  const [promo] = await Promise.all([getHeroPromotion()]);
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }}
+      />
       <style>{`
         /* ── Hero ── */
         .sd-hero {
@@ -164,6 +206,99 @@ export default async function HomePage() {
           position: absolute; inset: -40px;
           background: radial-gradient(ellipse at center, rgba(215,181,109,0.08) 0%, transparent 70%);
           pointer-events: none;
+        }
+
+        /* ── Life OS ── */
+        .sd-lifeos {
+          background: #f5f0e8; padding: 0; overflow: hidden;
+        }
+        .sd-lifeos-inner {
+          display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+          align-items: stretch; min-height: 780px;
+        }
+        .sd-lifeos-left {
+          padding: 80px 64px 80px 8vw;
+          display: flex; flex-direction: column; justify-content: center;
+          max-width: 680px;
+        }
+        .sd-lifeos-eyebrow {
+          font-size: 11px; font-weight: 800; letter-spacing: 0.18em;
+          text-transform: uppercase; color: #9b7c5c; margin-bottom: 14px;
+        }
+        .sd-lifeos-h {
+          font-size: clamp(26px, 2.8vw, 40px); font-weight: 800;
+          letter-spacing: -0.03em; line-height: 1.12;
+          color: #1a0f0e; margin-bottom: 14px;
+        }
+        .sd-lifeos-h em { color: #D7B56D; font-style: normal; }
+        .sd-lifeos-sub {
+          font-size: 14px; color: #6b5c4c; line-height: 1.75;
+          margin-bottom: 28px;
+        }
+
+        /* App info — left portion of right column */
+        .sd-app-info {
+          flex-shrink: 0; width: 260px;
+          display: flex; flex-direction: column; justify-content: center;
+          padding: 48px 20px 48px 32px;
+          border-left: 1px solid rgba(48,28,26,0.10);
+        }
+        .sd-app-info-eyebrow {
+          font-size: 11px; font-weight: 800; letter-spacing: 0.18em;
+          text-transform: uppercase; color: #9b7c5c; margin-bottom: 10px;
+          text-align: center;
+        }
+        .sd-app-info-h {
+          font-size: 22px; font-weight: 800; letter-spacing: -0.02em;
+          color: #1a0f0e; line-height: 1.2; margin-bottom: 22px;
+          text-align: center;
+        }
+        .sd-app-info-h em { color: #D7B56D; font-style: normal; }
+        /* Stacked feature boxes */
+        .sd-app-features { display: flex; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+        .sd-app-feature {
+          background: #fff; border-radius: 10px;
+          padding: 16px 18px;
+          border: 1px solid rgba(48,28,26,0.07);
+        }
+        .sd-app-feature-title {
+          font-size: 15px; font-weight: 700; color: #1a0f0e;
+          margin-bottom: 5px; letter-spacing: -0.01em;
+        }
+        .sd-app-feature-sub {
+          font-size: 14px; color: #7c6b5c; line-height: 1.6;
+        }
+        /* Platforms — centered under the third box */
+        .sd-app-platforms {
+          display: flex; align-items: center; justify-content: center; gap: 8px;
+          font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+          text-transform: uppercase; color: #9b7c5c;
+          margin-top: 4px;
+        }
+        .sd-app-platforms-dot { width: 3px; height: 3px; border-radius: 50%; background: #c4a882; }
+
+        /* Right column — flex row: text left, phone right */
+        .sd-phone-wrap {
+          display: flex; flex-direction: row; align-items: stretch;
+          overflow: hidden;
+        }
+        /* Phone image container — takes remaining space */
+        .sd-phone-img-wrap {
+          flex: 1; position: relative; overflow: hidden; min-width: 0;
+        }
+        .sd-phone-screenshot {
+          position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+          width: 100%; height: 100%;
+          object-fit: cover;
+          object-position: 51% 50%;
+          transform: scale(0.72) translateX(-20px);
+          transform-origin: center center;
+        }
+
+        @media (max-width: 960px) {
+          .sd-lifeos-inner { grid-template-columns: 1fr; min-height: auto; }
+          .sd-lifeos-left { padding: 56px 24px; max-width: 100%; }
+          .sd-phone-wrap { display: none; }
         }
 
         /* ── Sections ── */
@@ -283,6 +418,68 @@ export default async function HomePage() {
         .sd-cta-h { font-size: clamp(28px,4vw,52px); font-weight: 900; letter-spacing: -0.02em; color: var(--beige); margin-bottom: 16px; }
         .sd-cta-p { font-size: 17px; color: var(--text-muted); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; line-height: 1.7; }
 
+        /* Mid-page CTA card */
+        /* Mid-page CTA card */
+        .sd-midcta {
+          background: var(--bg-primary);
+          padding: 56px 48px;
+        }
+        .sd-midcta-card {
+          max-width: 1200px; margin: 0 auto;
+          border-radius: 16px;
+          background: linear-gradient(135deg, #c9a84c 0%, #D7B56D 40%, #e8ca87 70%, #c9a84c 100%);
+          border: 1px solid rgba(255,255,255,0.25);
+          padding: 32px 48px;
+          display: flex; align-items: center; justify-content: space-between; gap: 40px;
+          position: relative; overflow: hidden;
+          box-shadow: 0 8px 48px rgba(215,181,109,0.35), 0 2px 0 rgba(255,255,255,0.15) inset;
+        }
+        .sd-midcta-card::before {
+          content: '';
+          position: absolute; top: -40px; right: -40px;
+          width: 200px; height: 200px; border-radius: 50%;
+          background: radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 70%);
+          pointer-events: none;
+        }
+        .sd-midcta-left { display: flex; align-items: center; gap: 20px; position: relative; z-index: 1; }
+        .sd-midcta-dot {
+          width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+          background: #301C1A;
+          animation: pulse 2s ease-in-out infinite;
+        }
+        .sd-midcta-h {
+          font-size: 20px; font-weight: 800; letter-spacing: -0.02em;
+          color: #1a0f0e; margin-bottom: 6px; line-height: 1.2;
+        }
+        .sd-midcta-p {
+          font-size: 18px; color: rgba(48,28,26,0.65); line-height: 1.5;
+        }
+        .sd-midcta-ctas {
+          display: flex; gap: 12px; flex-shrink: 0;
+          position: relative; z-index: 1;
+        }
+        .sd-midcta-btn-primary {
+          font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+          text-transform: uppercase; color: #F5ECD8;
+          background: #301C1A; padding: 13px 28px;
+          text-decoration: none; border-radius: 6px;
+          transition: background 0.2s; display: inline-flex; align-items: center; white-space: nowrap;
+        }
+        .sd-midcta-btn-primary:hover { background: #4a2820; }
+        .sd-midcta-btn-ghost {
+          font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+          text-transform: uppercase; color: #301C1A;
+          background: rgba(255,255,255,0.25); padding: 13px 24px;
+          border: 1.5px solid rgba(48,28,26,0.2); text-decoration: none;
+          border-radius: 6px; transition: background 0.2s;
+          display: inline-flex; align-items: center; white-space: nowrap;
+        }
+        .sd-midcta-btn-ghost:hover { background: rgba(255,255,255,0.4); }
+
+        /* Legacy Readiness Checklist */
+        .sd-checklist { background: #ede6d8; padding: 60px 48px; }
+        .sd-checklist-inner { max-width: 1200px; margin: 0 auto; }
+
         /* Promo strip */
         .sd-promo {
           background: var(--crimson); padding: 20px 32px;
@@ -323,6 +520,93 @@ export default async function HomePage() {
       {/* ── Hero Carousel ── */}
       <HeroCarousel />
 
+      {/* ── The Life OS ── */}
+      <section className="sd-lifeos">
+        <div className="sd-lifeos-inner">
+          {/* Left */}
+          <div className="sd-lifeos-left">
+            <p className="sd-lifeos-eyebrow">The Life OS</p>
+            <h2 className="sd-lifeos-h">Four pillars. One complete <em>digital legacy.</em></h2>
+            <p className="sd-lifeos-sub">
+              Everything your family needs — assets, documents, medical wishes, and memories — organised, encrypted, and ready to pass on when it matters most.
+            </p>
+            <PillarRotator />
+          </div>
+
+          {/* Right col: app text left, phone right */}
+          <div className="sd-phone-wrap">
+            {/* App info — left portion */}
+            <div className="sd-app-info">
+              <p className="sd-app-info-eyebrow">The Soult App</p>
+              <h3 className="sd-app-info-h">Your legacy,<br /><em>in your pocket.</em></h3>
+              <div className="sd-app-features">
+                <div className="sd-app-feature">
+                  <div className="sd-app-feature-title">Vault at a glance</div>
+                  <div className="sd-app-feature-sub">Assets, loved ones, memories — visible the moment you open the app.</div>
+                </div>
+                <div className="sd-app-feature">
+                  <div className="sd-app-feature-title">Private by design</div>
+                  <div className="sd-app-feature-sub">AES-256 encryption and zero-knowledge architecture. Your data belongs only to you.</div>
+                </div>
+                <div className="sd-app-feature">
+                  <div className="sd-app-feature-title">Nominee controls</div>
+                  <div className="sd-app-feature-sub">Set what each person sees and define exactly when access is granted.</div>
+                </div>
+              </div>
+              <div className="sd-app-platforms">
+                <span>iOS</span>
+                <span className="sd-app-platforms-dot" />
+                <span>Android</span>
+                <span className="sd-app-platforms-dot" />
+                <span>Web</span>
+              </div>
+            </div>
+            {/* Phone image — right portion, right-anchored */}
+            <div className="sd-phone-img-wrap">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/app-screenshot.png"
+                alt="Soult app home screen"
+                className="sd-phone-screenshot"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Mid-page CTA strip ── */}
+      <div className="sd-midcta">
+        <div className="sd-midcta-card">
+          <div className="sd-midcta-left">
+            <span className="sd-midcta-dot" />
+            <div className="sd-midcta-text">
+              <h2 className="sd-midcta-h">Your vault takes under an hour to set up.</h2>
+              <p className="sd-midcta-p">Start free. Add documents, nominees, and memories at your own pace.</p>
+            </div>
+          </div>
+          <div className="sd-midcta-ctas">
+            <Link href="https://app.soultdigital.com/signup" className="sd-midcta-btn-primary">
+              Create My Vault — Free
+            </Link>
+            <Link href="/pricing" className="sd-midcta-btn-ghost">
+              See Pricing
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Legacy Readiness Checklist ── */}
+      <section className="sd-checklist">
+        <div className="sd-checklist-inner">
+          <LegacyChecklist />
+        </div>
+      </section>
+
+      {/* ── Quick Setup ── */}
+      <QuickSetup />
+      <TrustVault />
+      <ComparisonTable />
+
       {/* ── Promo strip ── */}
       {promo && (
         <div className="sd-promo">
@@ -334,130 +618,12 @@ export default async function HomePage() {
         </div>
       )}
 
-      {/* ── Features ── */}
-      <section className="sd-section" id="features">
-        <div className="sd-section-inner">
-          <p className="sd-section-label">What&apos;s Inside Your Vault</p>
-          <h2 className="sd-section-h">Everything your family<br />will ever need to find</h2>
-          <p className="sd-section-sub">
-            Most families spend weeks — sometimes months — piecing things together after a loss.
-            Soult eliminates that entirely.
-          </p>
-          <div className="sd-features-grid">
-            {FEATURES.map((f, i) => (
-              <div key={i} className="sd-feature-card">
-                <div className="sd-feature-icon">{f.icon}</div>
-                <h3 className="sd-feature-h">{f.title}</h3>
-                <p className="sd-feature-p">{f.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── How It Works ── */}
-      <section className="sd-section sd-how-bg" id="how-it-works">
-        <div className="sd-section-inner">
-          <p className="sd-section-label">How It Works</p>
-          <h2 className="sd-section-h">Up and running<br />in under an hour</h2>
-          <p className="sd-section-sub">
-            No financial expertise needed. No lengthy consultations. Just a guided setup
-            that protects your family from day one.
-          </p>
-          <div className="sd-how-grid">
-            {HOW.map((h, i) => (
-              <div key={i} className="sd-how-item">
-                <p className="sd-how-step">Step {h.step}</p>
-                <div className="sd-how-line" />
-                <h3 className="sd-how-h">{h.title}</h3>
-                <p className="sd-how-p">{h.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Pricing Preview ── */}
-      <section className="sd-section" id="pricing-preview">
-        <div className="sd-section-inner">
-          <p className="sd-section-label">Simple Pricing</p>
-          <h2 className="sd-section-h">Start free.<br />Grow with your family.</h2>
-          <p className="sd-section-sub">No hidden fees. Cancel anytime. Your data is always yours.</p>
-
-          {plans.length > 0 ? (
-            <div className="sd-plans-grid">
-              {plans.map((plan) => (
-                <div key={plan.id} className={`sd-plan-card${plan.highlighted ? " highlighted" : ""}`}>
-                  {plan.badge && <div className="sd-plan-badge">{plan.badge}</div>}
-                  <p className="sd-plan-name">{plan.name}</p>
-                  <p className="sd-plan-tagline">{plan.tagline}</p>
-                  <div className="sd-plan-price">
-                    <div className="sd-plan-price-num">
-                      {plan.price_monthly === 0 ? "Free" : (
-                        <>{plan.currency === "INR" ? "₹" : "$"}{plan.price_monthly}<span>/mo</span></>
-                      )}
-                    </div>
-                    {plan.price_monthly > 0 && (
-                      <p className="sd-plan-price-note">or ₹{plan.price_yearly}/year — save 2 months</p>
-                    )}
-                  </div>
-                  <ul className="sd-plan-features">
-                    {plan.features.slice(0, 4).map((f, i) => <li key={i}>{f}</li>)}
-                  </ul>
-                  <Link href={plan.cta_url} className={`sd-plan-cta ${plan.highlighted ? "primary" : "outline"}`}>
-                    {plan.cta_text}
-                  </Link>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="sd-plans-grid">
-              <div className="sd-plan-card"><p className="sd-plan-name">Starter</p><div className="sd-plan-price-num">Free</div></div>
-              <div className="sd-plan-card highlighted"><div className="sd-plan-badge">Most Popular</div><p className="sd-plan-name">Family</p><div className="sd-plan-price-num">₹499<span>/mo</span></div></div>
-              <div className="sd-plan-card"><p className="sd-plan-name">Estate</p><div className="sd-plan-price-num">₹1,499<span>/mo</span></div></div>
-            </div>
-          )}
-
-          <div style={{ textAlign: "center" }}>
-            <Link href="/pricing" className="sd-btn-ghost">View full pricing & compare plans →</Link>
-          </div>
-        </div>
-      </section>
-
       {/* ── Testimonials ── */}
-      <section className="sd-section sd-testi-bg">
-        <div className="sd-section-inner">
-          <p className="sd-section-label">What Families Say</p>
-          <h2 className="sd-section-h">Peace of mind.<br />Finally.</h2>
-          <div className="sd-testi-grid" style={{ marginTop: "0" }}>
-            {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="sd-testi-card">
-                <p className="sd-testi-body">{t.body}</p>
-                <p className="sd-testi-name">{t.name}</p>
-                <p className="sd-testi-role">{t.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Testimonials />
 
-      {/* ── CTA ── */}
-      <section className="sd-cta-section">
-        <div style={{ position: "relative", zIndex: 1 }}>
-          <p className="sd-section-label" style={{ textAlign: "center", marginBottom: "14px" }}>Start Today</p>
-          <h2 className="sd-cta-h">Your family deserves<br />this clarity.</h2>
-          <p className="sd-cta-p">
-            Join 10,000+ Indian families who&apos;ve already secured their legacy.
-            It takes less than an hour to set up. Start free — no credit card required.
-          </p>
-          <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
-            <Link href="https://app.soultdigital.com/signup" className="sd-btn-primary">
-              Create Your Life Vault — Free
-            </Link>
-            <Link href="/pricing" className="sd-btn-ghost">See Pricing</Link>
-          </div>
-        </div>
-      </section>
+      {/* ── FAQ ── */}
+      <HomeFAQ />
+
     </>
   );
 }

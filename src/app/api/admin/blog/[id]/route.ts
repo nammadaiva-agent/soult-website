@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase";
+import { submitUrlsToGoogle } from "@/lib/google-indexing";
 
 function auth(req: NextRequest) {
   return req.headers.get("x-admin-secret") === process.env.ADMIN_SECRET;
@@ -17,6 +18,12 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
   };
   const { data, error } = await supabaseAdmin().from("blog_posts").update(updates).eq("id", id).select().single();
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+  // Auto-submit to Google on publish or update
+  if (data?.published && data?.slug) {
+    await submitUrlsToGoogle([`/blog/${data.slug}`, "/blog", "/sitemap.xml"]);
+  }
+
   return NextResponse.json(data);
 }
 

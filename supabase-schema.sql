@@ -61,6 +61,22 @@ create table if not exists blog_posts (
   updated_at   timestamptz not null default now()
 );
 
+-- Hero Slides
+create table if not exists hero_slides (
+  id          uuid primary key default gen_random_uuid(),
+  image_url   text,
+  badge       text,
+  headline    text not null,
+  sub_text    text,
+  cta_label   text,
+  cta_url     text,
+  ghost_label text,
+  ghost_url   text,
+  sort_order  int not null default 0,
+  active      boolean not null default true,
+  created_at  timestamptz not null default now()
+);
+
 -- Seed pricing plans
 insert into pricing_plans (name, tagline, price_monthly, price_yearly, currency, features, highlighted, badge, cta_text, sort_order) values
   ('Starter', 'For individuals getting started', 0, 0, 'INR', '{"1 Life Vault","Up to 10 documents","Emergency access for 1 nominee","Basic will storage","Mobile app access"}', false, 'Free Forever', 'Start Free', 0),
@@ -72,10 +88,12 @@ alter table pricing_plans  enable row level security;
 alter table announcements   enable row level security;
 alter table promotions      enable row level security;
 alter table blog_posts      enable row level security;
+alter table hero_slides     enable row level security;
 
 create policy "Public read active pricing"       on pricing_plans  for select using (active = true);
 create policy "Public read active announcements" on announcements   for select using (active = true and (expires_at is null or expires_at > now()));
 create policy "Public read active promotions"    on promotions      for select using (active = true);
 create policy "Public read published posts"      on blog_posts      for select using (published = true);
+create policy "Public read active hero slides"   on hero_slides     for select using (active = true);
 
 -- Service role has full access (admin dashboard uses service role key)
