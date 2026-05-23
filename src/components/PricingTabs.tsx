@@ -121,9 +121,10 @@ const LEGACY_ACCENT = "#2C5F4A";
 interface PricingTabsProps {
   tab: "b2c" | "b2b";
   setTab: (t: "b2c" | "b2b") => void;
+  dark?: boolean;
 }
 
-export default function PricingTabs({ tab, setTab }: PricingTabsProps) {
+export default function PricingTabs({ tab, setTab, dark = false }: PricingTabsProps) {
 
   return (
     <div>
@@ -185,13 +186,14 @@ export default function PricingTabs({ tab, setTab }: PricingTabsProps) {
       `}</style>
       {/* ── Toggle ──────────────────────────────────────────────────────── */}
       <div style={{
-        display: "flex", justifyContent: "center", margin: "0 0 56px",
+        display: "flex", justifyContent: "center", margin: "0 0 40px",
       }}>
         <div style={{
           display: "inline-flex", alignItems: "center",
-          background: "#EDE6D8", borderRadius: 100,
+          background: dark ? "rgba(255,255,255,0.07)" : "#EDE6D8",
+          borderRadius: 100,
           padding: 4, gap: 2,
-          border: "1px solid rgba(43,29,22,0.1)",
+          border: dark ? "1px solid rgba(245,236,216,0.14)" : "1px solid rgba(43,29,22,0.1)",
         }}>
           {([
             { key: "b2c", label: "Individual & Families" },
@@ -201,7 +203,7 @@ export default function PricingTabs({ tab, setTab }: PricingTabsProps) {
               key={key}
               onClick={() => setTab(key)}
               style={{
-                padding: "10px 22px",
+                padding: "10px 24px",
                 borderRadius: 100, border: "none",
                 fontSize: 12, fontWeight: 700, letterSpacing: "0.06em",
                 cursor: "pointer",
@@ -209,8 +211,12 @@ export default function PricingTabs({ tab, setTab }: PricingTabsProps) {
                 background: tab === key
                   ? "linear-gradient(135deg, #B8860B 0%, #D4A843 50%, #E8C77A 100%)"
                   : "transparent",
-                color: tab === key ? "#2B1D16" : "rgba(43,29,22,0.5)",
-                boxShadow: tab === key ? "0 2px 8px rgba(200,155,60,0.25)" : "none",
+                color: tab === key
+                  ? "#1A0C04"
+                  : dark
+                  ? "rgba(245,236,216,0.52)"
+                  : "rgba(43,29,22,0.5)",
+                boxShadow: tab === key ? "0 2px 12px rgba(200,155,60,0.35)" : "none",
               }}
             >
               {label}

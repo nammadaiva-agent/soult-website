@@ -94,17 +94,18 @@ export default async function PricingPage() {
   return (
     <>
       <style>{`
-        /* ── Light warm theme for pricing ── */
+        /* ── Page base ── */
         .pr-page { padding-top: 72px; background: #F5F0E6; }
 
-        /* ── Hero ── */
+        /* ── Hero — dark brand zone ── */
         .pr-hero {
-          padding: 72px 32px 56px; text-align: center;
-          position: relative; overflow: hidden; background: #F5F0E6;
+          padding: 80px 32px 52px; text-align: center;
+          position: relative; overflow: hidden;
+          background: linear-gradient(150deg, #1E1208 0%, #301C1A 55%, #2B1D16 100%);
         }
         .pr-hero::before {
           content: ''; position: absolute; inset: 0;
-          background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(200,155,60,0.08) 0%, transparent 65%);
+          background: radial-gradient(ellipse 60% 45% at 50% 110%, rgba(200,155,60,0.1) 0%, transparent 65%);
           pointer-events: none;
         }
         .pr-eyebrow {
@@ -115,16 +116,16 @@ export default async function PricingPage() {
         .pr-eyebrow-line { width: 28px; height: 1px; background: #C89B3C; display: inline-block; }
         .pr-h {
           font-size: clamp(34px, 5vw, 58px); font-weight: 900;
-          letter-spacing: -0.03em; color: #2B1D16;
+          letter-spacing: -0.03em; color: #F5ECD8;
           margin-bottom: 14px; line-height: 1.05;
         }
         .pr-sub {
-          font-size: 16px; color: rgba(43,29,22,0.55);
+          font-size: 16px; color: rgba(245,236,216,0.65);
           max-width: 440px; margin: 0 auto 28px; line-height: 1.7;
         }
         .pr-billing-strip {
           display: inline-flex; align-items: center; gap: 8px;
-          background: rgba(200,155,60,0.1); border: 1px solid rgba(200,155,60,0.25);
+          background: rgba(200,155,60,0.12); border: 1px solid rgba(200,155,60,0.28);
           border-radius: 100px; padding: 8px 18px;
         }
         .pr-billing-dot {
@@ -132,26 +133,26 @@ export default async function PricingPage() {
           animation: pr-pulse 2s ease-in-out infinite;
         }
         @keyframes pr-pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
-        .pr-billing-text { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; color: #9B7340; }
+        .pr-billing-text { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; color: rgba(245,236,216,0.72); }
 
         /* ── Promo ── */
         .pr-promo {
           max-width: 760px; margin: 28px auto 0;
-          background: rgba(200,155,60,0.08); border: 1px solid rgba(200,155,60,0.25);
+          background: rgba(200,155,60,0.1); border: 1px solid rgba(200,155,60,0.22);
           padding: 14px 22px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
           border-radius: 8px;
         }
         .pr-promo-badge {
           font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
-          color: #fff; background: #C89B3C; padding: 4px 10px; border-radius: 4px;
+          color: #1A0C04; background: #C89B3C; padding: 4px 10px; border-radius: 4px;
         }
-        .pr-promo-text { font-size: 13px; font-weight: 600; color: #2B1D16; flex: 1; }
+        .pr-promo-text { font-size: 13px; font-weight: 600; color: #F5ECD8; flex: 1; }
         .pr-promo-cta {
           font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
-          color: #C89B3C; border: 1.5px solid #C89B3C; padding: 5px 14px;
+          color: #C89B3C; border: 1.5px solid rgba(200,155,60,0.55); padding: 5px 14px;
           text-decoration: none; border-radius: 4px; transition: background 0.2s;
         }
-        .pr-promo-cta:hover { background: rgba(200,155,60,0.1); }
+        .pr-promo-cta:hover { background: rgba(200,155,60,0.12); }
 
         /* ── Section labels ── */
         .pr-section-label {

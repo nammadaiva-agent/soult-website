@@ -43,148 +43,170 @@ export default function TermsPage() {
   return (
     <>
       <style>{`
-        .tc { font-family: 'Outfit', sans-serif; background: #FDFAF6; color: #2B1D16; }
+        .tc { font-family: 'Outfit', sans-serif; background: #F5ECD8; color: #301C1A; }
 
         /* ── HERO ── */
         .tc-hero {
-          background: #FDFAF6; padding: 72px 64px 56px;
-          border-bottom: 1px solid rgba(43,29,22,0.08);
+          background: linear-gradient(135deg, #301C1A 0%, #662D29 60%, #4A1F1C 100%);
+          padding: 80px 64px 64px;
+          border-bottom: 1px solid rgba(215,181,109,0.18);
           position: relative; overflow: hidden;
         }
         .tc-hero::before {
           content: ''; position: absolute;
-          top: -160px; right: -160px; width: 500px; height: 500px;
-          background: radial-gradient(circle, rgba(200,155,60,0.07) 0%, transparent 65%);
+          top: -180px; right: -180px; width: 560px; height: 560px;
+          background: radial-gradient(circle, rgba(215,181,109,0.12) 0%, transparent 60%);
+          border-radius: 50%; pointer-events: none;
+        }
+        .tc-hero::after {
+          content: ''; position: absolute;
+          bottom: -80px; left: -80px; width: 360px; height: 360px;
+          background: radial-gradient(circle, rgba(102,45,41,0.40) 0%, transparent 65%);
           border-radius: 50%; pointer-events: none;
         }
         .tc-hero-inner { max-width: 1160px; margin: 0 auto; position: relative; }
         .tc-hero-eyebrow {
           display: inline-flex; align-items: center; gap: 8px;
           font-size: 11px; font-weight: 800; letter-spacing: 0.22em;
-          text-transform: uppercase; color: #C89B3C; margin-bottom: 18px;
+          text-transform: uppercase; color: #D7B56D; margin-bottom: 20px;
         }
         .tc-hero-eyebrow::before {
           content: ''; display: inline-block;
-          width: 20px; height: 1.5px; background: #C89B3C;
+          width: 24px; height: 1.5px; background: #D7B56D;
         }
         .tc-hero-h {
-          font-size: clamp(32px, 4vw, 52px); font-weight: 900; color: #2B1D16;
-          letter-spacing: -0.03em; line-height: 1.08; margin: 0 0 8px;
+          font-size: clamp(36px, 4.5vw, 58px); font-weight: 900; color: #FFFFFF;
+          letter-spacing: -0.03em; line-height: 1.06; margin: 0 0 10px;
         }
         .tc-hero-sub {
-          font-size: 17px; color: rgba(43,29,22,0.50); font-weight: 400; margin: 0 0 28px;
+          font-size: 18px; color: rgba(245,236,216,0.75); font-weight: 400; margin: 0 0 10px; line-height: 1.5;
+        }
+        .tc-hero-company {
+          font-size: 13px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase;
+          color: rgba(245,236,216,0.50); margin: 0 0 28px; line-height: 1.7;
         }
         .tc-hero-meta {
           display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
         }
         .tc-hero-meta-item {
           display: flex; align-items: center; gap: 7px;
-          font-size: 13px; color: rgba(43,29,22,0.45); font-weight: 500;
+          font-size: 13px; color: rgba(245,236,216,0.55); font-weight: 500;
         }
-        .tc-hero-meta-item svg { width: 13px; height: 13px; stroke: rgba(43,29,22,0.30); fill: none; stroke-width: 2; stroke-linecap: round; }
+        .tc-hero-meta-item svg { width: 13px; height: 13px; stroke: rgba(215,181,109,0.80); fill: none; stroke-width: 2; stroke-linecap: round; }
         .tc-hero-badge {
           display: inline-flex; align-items: center; gap: 7px;
-          background: rgba(200,155,60,0.09); border: 1px solid rgba(200,155,60,0.22);
+          background: rgba(215,181,109,0.15); border: 1px solid rgba(215,181,109,0.40);
           border-radius: 100px; padding: 6px 14px;
-          font-size: 12px; font-weight: 700; color: #8B6914; letter-spacing: 0.04em;
+          font-size: 12px; font-weight: 700; color: #E8CA8E; letter-spacing: 0.04em;
         }
-        .tc-hero-badge svg { width: 12px; height: 12px; stroke: #C89B3C; fill: none; stroke-width: 2; stroke-linecap: round; }
+        .tc-hero-badge svg { width: 12px; height: 12px; stroke: #E8CA8E; fill: none; stroke-width: 2; stroke-linecap: round; }
 
         /* ── NOTICE BAR ── */
         .tc-notice {
-          background: #FFF8EC; border-bottom: 1px solid rgba(200,155,60,0.18);
+          background: #EEE0C4; border-bottom: 1px solid rgba(102,45,41,0.15);
           padding: 14px 64px;
         }
         .tc-notice-inner {
           max-width: 1160px; margin: 0 auto;
-          font-size: 13px; color: rgba(43,29,22,0.60); line-height: 1.55;
+          font-size: 13px; color: rgba(48,28,26,0.65); line-height: 1.55;
         }
-        .tc-notice-inner strong { color: #2B1D16; font-weight: 700; }
+        .tc-notice-inner strong { color: #301C1A; font-weight: 700; }
 
         /* ── LAYOUT ── */
         .tc-layout {
           max-width: 1160px; margin: 0 auto;
-          display: grid; grid-template-columns: 240px 1fr;
+          display: grid; grid-template-columns: 260px 1fr;
           gap: 0; align-items: start;
+          padding: 0 24px;
         }
 
         /* ── TOC SIDEBAR ── */
         .tc-toc {
-          position: sticky; top: 24px;
-          padding: 40px 24px 40px 0;
-          border-right: 1px solid rgba(43,29,22,0.07);
-          height: calc(100vh - 48px); overflow-y: auto;
+          position: sticky; top: 80px;
+          padding: 32px 20px 40px 0;
+          height: calc(100vh - 80px); overflow-y: auto;
         }
         .tc-toc-label {
           font-size: 10px; font-weight: 800; letter-spacing: 0.22em;
-          text-transform: uppercase; color: rgba(43,29,22,0.30); margin-bottom: 16px;
+          text-transform: uppercase; color: rgba(48,28,26,0.35); margin-bottom: 14px;
           padding: 0 4px;
+        }
+        .tc-toc-inner {
+          background: #fff;
+          border: 1px solid rgba(48,28,26,0.08);
+          border-radius: 16px;
+          box-shadow: 0 4px 20px rgba(48,28,26,0.07);
+          padding: 8px;
+          overflow: hidden;
         }
         .tc-toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1px; }
         .tc-toc-item a {
-          display: flex; align-items: baseline; gap: 8px;
-          padding: 8px 10px; border-radius: 8px;
-          font-size: 13px; font-weight: 500; color: rgba(43,29,22,0.45);
+          display: flex; align-items: center; gap: 10px;
+          padding: 7px 10px; border-radius: 10px;
+          font-size: 13px; font-weight: 500; color: rgba(48,28,26,0.50);
           text-decoration: none; letter-spacing: 0.01em;
           transition: color 0.18s, background 0.18s;
           line-height: 1.4;
         }
         .tc-toc-item a:hover {
-          color: #C89B3C; background: rgba(200,155,60,0.07);
+          color: #58362B; background: rgba(88,54,43,0.06);
         }
-        .tc-toc-num {
-          font-size: 10px; font-weight: 800; color: rgba(200,155,60,0.45);
-          letter-spacing: 0.08em; flex-shrink: 0; padding-top: 1px;
+        .tc-toc-badge {
+          flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+          background: #F5ECD8; border: 1px solid rgba(102,45,41,0.15);
+          display: flex; align-items: center; justify-content: center;
+          font-size: 10px; font-weight: 800; color: #662D29; letter-spacing: 0;
         }
 
         /* ── CONTENT ── */
-        .tc-content { padding: 52px 0 100px 56px; }
+        .tc-content { padding: 52px 0 100px 48px; }
 
         /* ── SECTION ── */
         .tc-section {
           margin-bottom: 0;
           padding: 48px 0;
-          border-bottom: 1px solid rgba(43,29,22,0.07);
-          scroll-margin-top: 24px;
+          border-bottom: 1px solid rgba(48,28,26,0.09);
+          scroll-margin-top: 80px;
         }
         .tc-section:last-child { border-bottom: none; }
 
         .tc-sec-num {
           font-size: 11px; font-weight: 800; letter-spacing: 0.2em;
-          color: #C89B3C; margin-bottom: 8px; text-transform: uppercase;
+          color: #D7B56D; margin-bottom: 8px; text-transform: uppercase;
         }
         .tc-sec-h {
-          font-size: 22px; font-weight: 800; color: #2B1D16;
+          font-size: 22px; font-weight: 800; color: #58362B;
           letter-spacing: -0.02em; line-height: 1.2; margin: 0 0 20px;
         }
         .tc-sec-p {
-          font-size: 16px; color: rgba(43,29,22,0.65); line-height: 1.80; margin: 0 0 16px;
+          font-size: 15px; color: rgba(48,28,26,0.70); line-height: 1.80; margin: 0 0 16px;
         }
         .tc-sec-p:last-child { margin-bottom: 0; }
 
         /* ── SUB SECTION (within 8, 9, 10) ── */
         .tc-sub {
-          margin: 24px 0;
+          margin: 20px 0;
           padding: 22px 24px;
-          background: #F5F0E8;
+          background: linear-gradient(135deg, rgba(102,45,41,0.06) 0%, rgba(48,28,26,0.04) 100%);
           border-radius: 14px;
-          border-left: 3px solid rgba(200,155,60,0.40);
+          border: 1px solid rgba(215,181,109,0.30);
+          border-left: 3px solid #D7B56D;
         }
         .tc-sub-h {
-          font-size: 14px; font-weight: 800; color: #2B1D16;
-          letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 12px;
+          font-size: 13px; font-weight: 800; color: #58362B;
+          letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px;
         }
         .tc-sub-list {
           list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px;
         }
         .tc-sub-list li {
           display: flex; align-items: flex-start; gap: 10px;
-          font-size: 15px; color: rgba(43,29,22,0.65); line-height: 1.65;
+          font-size: 14.5px; color: rgba(48,28,26,0.70); line-height: 1.65;
         }
         .tc-sub-list li::before {
           content: ''; display: inline-block; flex-shrink: 0;
           width: 6px; height: 6px; border-radius: 50%;
-          background: #C89B3C; margin-top: 7px;
+          background: #D7B56D; margin-top: 7px;
         }
 
         /* ── DEFINITION TABLE ── */
@@ -192,24 +214,25 @@ export default function TermsPage() {
           width: 100%; border-collapse: collapse; margin: 8px 0;
           font-size: 15px;
         }
-        .tc-def-table tr { border-bottom: 1px solid rgba(43,29,22,0.07); }
+        .tc-def-table tr { border-bottom: 1px solid rgba(48,28,26,0.07); }
         .tc-def-table tr:last-child { border-bottom: none; }
         .tc-def-table td { padding: 14px 12px; vertical-align: top; line-height: 1.65; }
         .tc-def-table td:first-child {
-          font-weight: 700; color: #2B1D16; width: 200px;
+          font-weight: 700; color: #58362B; width: 200px;
           white-space: nowrap; font-size: 14px;
         }
-        .tc-def-table td:last-child { color: rgba(43,29,22,0.62); }
-        .tc-def-table tr:nth-child(odd) td { background: #F5F0E8; }
+        .tc-def-table td:last-child { color: rgba(48,28,26,0.65); }
+        .tc-def-table tr:nth-child(odd) td { background: rgba(102,45,41,0.04); }
         .tc-def-table tr:nth-child(odd) td:first-child { border-radius: 8px 0 0 8px; }
         .tc-def-table tr:nth-child(odd) td:last-child { border-radius: 0 8px 8px 0; }
 
         /* ── ALLCAPS LEGAL BOX ── */
         .tc-allcaps {
-          background: #F5F0E8; border-radius: 14px;
-          border: 1px solid rgba(43,29,22,0.09);
+          background: linear-gradient(135deg, rgba(102,45,41,0.07) 0%, rgba(48,28,26,0.04) 100%);
+          border-radius: 14px;
+          border: 1px solid rgba(215,181,109,0.28);
           padding: 24px 28px; margin: 20px 0;
-          font-size: 13px; color: rgba(43,29,22,0.55);
+          font-size: 13px; color: rgba(48,28,26,0.60);
           line-height: 1.70; letter-spacing: 0.01em;
           font-weight: 500;
         }
@@ -221,57 +244,58 @@ export default function TermsPage() {
         }
         .tc-list li {
           display: flex; align-items: flex-start; gap: 10px;
-          font-size: 16px; color: rgba(43,29,22,0.65); line-height: 1.65;
+          font-size: 15px; color: rgba(48,28,26,0.70); line-height: 1.65;
         }
         .tc-list li::before {
           content: ''; display: inline-block; flex-shrink: 0;
           width: 6px; height: 6px; border-radius: 50%;
-          background: #C89B3C; margin-top: 8px;
+          background: #D7B56D; margin-top: 8px;
         }
 
         /* ── CONTACT CARD ── */
         .tc-contact-card {
           background: #fff; border-radius: 20px;
-          border: 1px solid rgba(43,29,22,0.09);
-          box-shadow: 0 4px 24px rgba(43,29,22,0.06);
+          border: 1px solid rgba(48,28,26,0.09);
+          box-shadow: 0 4px 24px rgba(48,28,26,0.07);
           overflow: hidden; margin-top: 8px;
         }
         .tc-contact-header {
-          background: #F5F0E8; padding: 18px 28px;
-          border-bottom: 1px solid rgba(43,29,22,0.07);
-          font-size: 13px; font-weight: 700; color: rgba(43,29,22,0.40);
-          letter-spacing: 0.12em; text-transform: uppercase;
+          background: linear-gradient(135deg, rgba(102,45,41,0.08) 0%, rgba(48,28,26,0.04) 100%);
+          padding: 18px 28px;
+          border-bottom: 1px solid rgba(48,28,26,0.07);
+          font-size: 13px; font-weight: 700; color: #58362B;
+          letter-spacing: 0.10em; text-transform: uppercase;
         }
         .tc-contact-body { padding: 24px 28px; display: flex; flex-direction: column; gap: 14px; }
         .tc-contact-row {
           display: flex; align-items: flex-start; gap: 12px;
           font-size: 15px; line-height: 1.55;
         }
-        .tc-contact-row svg { flex-shrink: 0; margin-top: 2px; stroke: #C89B3C; fill: none; stroke-width: 1.7; stroke-linecap: round; }
-        .tc-contact-label { font-size: 11px; font-weight: 700; color: rgba(43,29,22,0.35); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 3px; }
-        .tc-contact-val { color: #2B1D16; font-weight: 500; }
-        .tc-contact-val a { color: #C89B3C; text-decoration: none; }
+        .tc-contact-row svg { flex-shrink: 0; margin-top: 2px; stroke: #D7B56D; fill: none; stroke-width: 1.7; stroke-linecap: round; }
+        .tc-contact-label { font-size: 11px; font-weight: 700; color: rgba(48,28,26,0.38); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 3px; }
+        .tc-contact-val { color: #301C1A; font-weight: 500; }
+        .tc-contact-val a { color: #D7B56D; text-decoration: none; }
         .tc-contact-val a:hover { text-decoration: underline; }
         .tc-contact-ids {
           display: flex; gap: 16px; flex-wrap: wrap;
-          padding-top: 16px; border-top: 1px solid rgba(43,29,22,0.07);
+          padding-top: 16px; border-top: 1px solid rgba(48,28,26,0.07);
         }
         .tc-id-pill {
-          font-size: 12px; font-weight: 700; color: rgba(43,29,22,0.50);
-          background: #F5F0E8; border: 1px solid rgba(43,29,22,0.09);
+          font-size: 12px; font-weight: 700; color: rgba(48,28,26,0.55);
+          background: #F5ECD8; border: 1px solid rgba(102,45,41,0.12);
           border-radius: 8px; padding: 6px 12px; letter-spacing: 0.04em;
         }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 960px) {
-          .tc-layout { grid-template-columns: 1fr; }
+          .tc-layout { grid-template-columns: 1fr; padding: 0; }
           .tc-toc { display: none; }
           .tc-content { padding: 40px 24px 80px; }
           .tc-hero, .tc-notice { padding-left: 24px; padding-right: 24px; }
         }
         @media (max-width: 600px) {
           .tc-hero { padding-top: 48px; padding-bottom: 36px; }
-          .tc-def-table td:first-child { width: 140px; }
+          .tc-def-table td:first-child { width: 130px; white-space: normal; }
         }
       `}</style>
 
@@ -282,15 +306,12 @@ export default function TermsPage() {
           <div className="tc-hero-inner">
             <div className="tc-hero-eyebrow">Legal Document</div>
             <h1 className="tc-hero-h">Terms of Use</h1>
-            <p className="tc-hero-sub">Including End User License Agreement (EULA)</p>
+            <p className="tc-hero-sub">Including End User License Agreement</p>
+            <p className="tc-hero-company">SOULT DIGITAL PRIVATE LIMITED<br />Mangalore, Karnataka, India</p>
             <div className="tc-hero-meta">
               <div className="tc-hero-meta-item">
                 <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 Last Updated: April 2026
-              </div>
-              <div className="tc-hero-meta-item">
-                <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                Soult Digital Private Limited, Mangalore, Karnataka, India
               </div>
               <div className="tc-hero-badge">
                 <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -313,23 +334,25 @@ export default function TermsPage() {
           {/* TOC */}
           <aside className="tc-toc">
             <div className="tc-toc-label">Contents</div>
-            <ul className="tc-toc-list">
-              {TOC.map((item) => (
-                <li className="tc-toc-item" key={item.n}>
-                  <a href={`#section-${item.n}`}>
-                    <span className="tc-toc-num">{item.n}</span>
-                    {item.h}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <div className="tc-toc-inner">
+              <ul className="tc-toc-list">
+                {TOC.map((item) => (
+                  <li className="tc-toc-item" key={item.n}>
+                    <a href={`#s${item.n}`}>
+                      <span className="tc-toc-badge">{item.n}</span>
+                      {item.h}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </aside>
 
           {/* CONTENT */}
           <main className="tc-content">
 
             {/* 1 — General */}
-            <section className="tc-section" id="section-1">
+            <section className="tc-section" id="s1">
               <div className="tc-sec-num">Section 01</div>
               <h2 className="tc-sec-h">General</h2>
               <p className="tc-sec-p">The Platform is made available by <strong>SOULT DIGITAL PRIVATE LIMITED</strong> ("Soult", "Company", "we", "us", "our"), a company established under the laws of India, having its registered office at Door No 4-1-143/1A(2), Vertex Workspace, Gateway Building, Above Kalyan Jewellers, MG Road, Mangalore – 575003, Karnataka, India.</p>
@@ -347,7 +370,7 @@ export default function TermsPage() {
             </section>
 
             {/* 2 — Definitions */}
-            <section className="tc-section" id="section-2">
+            <section className="tc-section" id="s2">
               <div className="tc-sec-num">Section 02</div>
               <h2 className="tc-sec-h">Definitions</h2>
               <p className="tc-sec-p">Unless defined here, all capitalised terms carry the meaning ascribed to them in the Privacy Policy.</p>
@@ -364,7 +387,7 @@ export default function TermsPage() {
             </section>
 
             {/* 3 — Eligibility */}
-            <section className="tc-section" id="section-3">
+            <section className="tc-section" id="s3">
               <div className="tc-sec-num">Section 03</div>
               <h2 className="tc-sec-h">Eligibility</h2>
               <p className="tc-sec-p">Persons who are "incompetent to contract" within the meaning of the Indian Contract Act, 1872 — including minors and un-discharged insolvents — are not eligible to use the Platform.</p>
@@ -373,7 +396,7 @@ export default function TermsPage() {
             </section>
 
             {/* 4 — Amendments */}
-            <section className="tc-section" id="section-4">
+            <section className="tc-section" id="s4">
               <div className="tc-sec-num">Section 04</div>
               <h2 className="tc-sec-h">Amendments</h2>
               <p className="tc-sec-p">The Company reserves the right to change or modify these Terms, or any policy or guideline of the Platform (including the Privacy Policy), at any time and in its sole discretion. Changes take effect immediately upon posting.</p>
@@ -381,7 +404,7 @@ export default function TermsPage() {
             </section>
 
             {/* 5 — Subscription */}
-            <section className="tc-section" id="section-5">
+            <section className="tc-section" id="s5">
               <div className="tc-sec-num">Section 05</div>
               <h2 className="tc-sec-h">Subscription & Payments</h2>
               <p className="tc-sec-p">Certain features on the Platform may require subscription payments. Fees are displayed transparently within the Platform. Payments are processed through third-party payment gateways. Soult shall not be responsible for payment failures but will attempt to resolve them in good faith.</p>
@@ -390,7 +413,7 @@ export default function TermsPage() {
             </section>
 
             {/* 6 — User Account */}
-            <section className="tc-section" id="section-6">
+            <section className="tc-section" id="s6">
               <div className="tc-sec-num">Section 06</div>
               <h2 className="tc-sec-h">User Account, Password and Security</h2>
               <p className="tc-sec-p">You may access the Platform by registering directly or through a third-party social media account ("Third Party Account"). By granting us access to a Third Party Account, you confirm you are entitled to do so and that it does not breach the terms of that platform.</p>
@@ -405,7 +428,7 @@ export default function TermsPage() {
             </section>
 
             {/* 7 — User Obligations */}
-            <section className="tc-section" id="section-7">
+            <section className="tc-section" id="s7">
               <div className="tc-sec-num">Section 07</div>
               <h2 className="tc-sec-h">User Obligations</h2>
               <p className="tc-sec-p">Subject to compliance with these Terms, Soult grants you a personal, non-exclusive, non-transferable, limited licence to access and use the Platform. You agree to use the Platform only for lawful purposes and in accordance with applicable law.</p>
@@ -433,7 +456,7 @@ export default function TermsPage() {
             </section>
 
             {/* 8 — Organ Donation */}
-            <section className="tc-section" id="section-8">
+            <section className="tc-section" id="s8">
               <div className="tc-sec-num">Section 08</div>
               <h2 className="tc-sec-h">Specific Terms for Organ Donation Preferences</h2>
               <p className="tc-sec-p">Soult is a preference-recording platform only. Recording your organ donation preferences on the Platform does not constitute statutory or legal consent under any applicable law, including the Transplantation of Human Organs and Tissues Act. Final consent must be provided by next-of-kin or through official government documentation at the time of passing.</p>
@@ -470,7 +493,7 @@ export default function TermsPage() {
             </section>
 
             {/* 9 — Will Management */}
-            <section className="tc-section" id="section-9">
+            <section className="tc-section" id="s9">
               <div className="tc-sec-num">Section 09</div>
               <h2 className="tc-sec-h">Specific Terms for Will Management</h2>
               <p className="tc-sec-p">Soult is a technology platform, not a law firm. Use of the Platform does not create an attorney-client relationship. Guided templates are automated tools and do not constitute legal advice or a legal opinion. A Will drafted on Soult is not legally binding until it is physically executed, signed, and witnessed in accordance with applicable law.</p>
@@ -513,7 +536,7 @@ export default function TermsPage() {
             </section>
 
             {/* 10 — Executor */}
-            <section className="tc-section" id="section-10">
+            <section className="tc-section" id="s10">
               <div className="tc-sec-num">Section 10</div>
               <h2 className="tc-sec-h">Executor Nomination</h2>
 
@@ -556,7 +579,7 @@ export default function TermsPage() {
             </section>
 
             {/* 11 — Indemnification */}
-            <section className="tc-section" id="section-11">
+            <section className="tc-section" id="s11">
               <div className="tc-sec-num">Section 11</div>
               <h2 className="tc-sec-h">Indemnification and Limitation of Liability</h2>
               <p className="tc-sec-p">You agree to indemnify, defend, and hold harmless the Company — including its affiliates, vendors, representatives, directors, agents, and employees — against all losses, liabilities, claims, damages, costs, and expenses (including legal fees) arising from any breach of these Terms, your use of the Platform, or your violation of the rights of any third party.</p>
@@ -567,7 +590,7 @@ export default function TermsPage() {
             </section>
 
             {/* 12 — Violation */}
-            <section className="tc-section" id="section-12">
+            <section className="tc-section" id="s12">
               <div className="tc-sec-num">Section 12</div>
               <h2 className="tc-sec-h">Violation of Terms</h2>
               <p className="tc-sec-p">The Company may, in its sole discretion and without prior notice, terminate your access to the Platform and block future access if you have violated these Terms. Violations may result in injunctive or equitable relief being sought by the Company, in addition to any remedies available at law.</p>
@@ -575,7 +598,7 @@ export default function TermsPage() {
             </section>
 
             {/* 13 — Termination */}
-            <section className="tc-section" id="section-13">
+            <section className="tc-section" id="s13">
               <div className="tc-sec-num">Section 13</div>
               <h2 className="tc-sec-h">Termination</h2>
               <p className="tc-sec-p">These Terms will continue to apply until terminated by either you or the Company. You may terminate your agreement by not accessing the Platform or by closing your Account.</p>
@@ -584,7 +607,7 @@ export default function TermsPage() {
             </section>
 
             {/* 14 — Mobile */}
-            <section className="tc-section" id="section-14">
+            <section className="tc-section" id="s14">
               <div className="tc-sec-num">Section 14</div>
               <h2 className="tc-sec-h">Relationship with Mobile Platform Operators</h2>
               <p className="tc-sec-p">The Platform is not associated with, affiliated to, sponsored, or endorsed by Apple, Google, or Android (each an "Operator"). Your download and use of the Platform is also bound by the relevant Operator's terms.</p>
@@ -593,7 +616,7 @@ export default function TermsPage() {
             </section>
 
             {/* 15 — Disclaimers */}
-            <section className="tc-section" id="section-15">
+            <section className="tc-section" id="s15">
               <div className="tc-sec-num">Section 15</div>
               <h2 className="tc-sec-h">Disclaimers</h2>
               <div className="tc-allcaps">
@@ -602,7 +625,7 @@ export default function TermsPage() {
             </section>
 
             {/* 16 — IP */}
-            <section className="tc-section" id="section-16">
+            <section className="tc-section" id="s16">
               <div className="tc-sec-num">Section 16</div>
               <h2 className="tc-sec-h">Intellectual Property Rights</h2>
               <p className="tc-sec-p">Soult owns or holds the rights to all intellectual property in the Platform, including its user interface, layout, branding, and published content. The name "Soult" and all associated logos and marks are proprietary to Soult Digital Private Limited.</p>
@@ -611,7 +634,7 @@ export default function TermsPage() {
             </section>
 
             {/* 17 — Third Party */}
-            <section className="tc-section" id="section-17">
+            <section className="tc-section" id="s17">
               <div className="tc-sec-num">Section 17</div>
               <h2 className="tc-sec-h">Third Party Content</h2>
               <p className="tc-sec-p">When you access a link that leaves the Platform, the site you enter is not controlled by Soult. Different terms and privacy policies apply. Soult is not responsible for third-party sites and reserves the right to disable links to or from them.</p>
@@ -619,7 +642,7 @@ export default function TermsPage() {
             </section>
 
             {/* 18 — Governing Law */}
-            <section className="tc-section" id="section-18">
+            <section className="tc-section" id="s18">
               <div className="tc-sec-num">Section 18</div>
               <h2 className="tc-sec-h">Governing Law and Jurisdiction</h2>
               <p className="tc-sec-p">These Terms are governed by the laws of India. Any action, suit, or legal proceeding arising under or relating to the Platform or Services shall be subject to the exclusive jurisdiction of the courts at Mangalore, Karnataka, India.</p>
@@ -627,7 +650,7 @@ export default function TermsPage() {
             </section>
 
             {/* 19 — Grievance */}
-            <section className="tc-section" id="section-19">
+            <section className="tc-section" id="s19">
               <div className="tc-sec-num">Section 19</div>
               <h2 className="tc-sec-h">Grievance Redressal</h2>
               <p className="tc-sec-p">For any questions, concerns, or grievances regarding these Terms or the Platform, please contact our Grievance Officer. We shall endeavour to resolve your grievance within 15 (fifteen) days from the date of receipt.</p>
@@ -659,7 +682,7 @@ export default function TermsPage() {
             </section>
 
             {/* 20 — Communications */}
-            <section className="tc-section" id="section-20">
+            <section className="tc-section" id="s20">
               <div className="tc-sec-num">Section 20</div>
               <h2 className="tc-sec-h">Communications</h2>
               <p className="tc-sec-p">You agree to permit Soult to send you service-related communications including OTPs, security alerts, support responses, and account notifications via SMS, email, or any electronic means.</p>

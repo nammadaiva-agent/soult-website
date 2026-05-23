@@ -5,34 +5,34 @@ import Image from "next/image";
 
 const PROTECT_ITEMS = {
   financial: [
-    { icon: "◈", title: "Money, Property & Valuables", sub: "Bank accounts, investments, property deeds, insurance & more", href: "#features" },
-    { icon: "◈", title: "Documents & Will", sub: "Last Will, Power of Attorney, legal records & safe deposit info", href: "#features" },
-    { icon: "◈", title: "Medical Wishes", sub: "Healthcare directives, organ donation, emergency contacts & doctors", href: "#features" },
+    { title: "Money, property & valuables", sub: "Assets, investments, insurance, property", href: "/financial" },
+    { title: "Important documents & Will", sub: "Will, POA, legal records", href: "/wisdom-spiritual" },
+    { title: "Medical wishes & emergency info", sub: "Directives, organ donation, health contacts", href: "/physical-health" },
   ],
   personal: [
-    { icon: "◈", title: "Memories & Stories", sub: "Record life lessons, family stories, letters & personal legacies", href: "#features" },
-    { icon: "◈", title: "Relationships & Trusted People", sub: "Add nominees, set permissions, appoint executors — all guided", href: "#features" },
+    { title: "Memories, stories & voice notes", sub: "Personal legacy, family stories, life lessons", href: "/wisdom-spiritual" },
+    { title: "Relationships & trusted people", sub: "Nominees, executors, loved ones", href: "/relationships" },
   ],
 };
 
 const WHY_ITEMS = {
-  product: [
-    { icon: "◈", title: "How Soult Works", sub: "A guided walkthrough from setup to secure handover", href: "#how-it-works" },
-    { icon: "◈", title: "Security & Privacy", sub: "AES-256 encryption, zero-knowledge architecture, AWS infrastructure", href: "#features" },
-    { icon: "◈", title: "Executor Flow", sub: "Step-by-step guidance for nominees and executors when it matters", href: "#features" },
-    { icon: "◈", title: "Legal Validity", sub: "Compliant with Indian succession laws and documentation standards", href: "#features" },
+  understand: [
+    { title: "How Soult works", sub: "The vault, executor flow, and access", href: "/#how-it-works" },
+    { title: "Security & privacy", sub: "Encryption, data residency, zero-trust", href: "/security" },
+    { title: "Executor & handover flow", sub: "How your family gets access when it matters", href: "/security#under-the-hood" },
+    { title: "Legal validity", sub: "What Soult can and cannot do legally", href: "/terms" },
   ],
   learn: [
-    { icon: "◈", title: "Security Whitepaper", sub: "Deep dive into how we keep your data safe", href: "/blog" },
-    { icon: "◈", title: "Blog & Guides", sub: "Estate planning, legacy tips, and family finance", href: "/blog" },
-    { icon: "◈", title: "Help Centre", sub: "FAQs, tutorials and support resources", href: "#" },
-    { icon: "◈", title: "About Us", sub: "Our mission to protect every Indian family's legacy", href: "#" },
+    { title: "Security Whitepaper", sub: "Human-centric bridge for your family", href: "/security" },
+    { title: "Blog & life guides", sub: "Planning guides and insights", href: "/blog" },
+    { title: "Help centre", sub: "Common questions answered", href: "/faq" },
+    { title: "About Soult", sub: "Who we are and why we built this", href: "/about" },
   ],
 };
 
 const BUSINESS_ITEMS = [
-  { icon: "◈", title: "Corporate Wellness", sub: "Offer Soult as an employee benefit — legacy planning at scale", href: "#" },
-  { icon: "◈", title: "Channel Partners", sub: "Financial advisors, CAs, and legal professionals", href: "#" },
+  { title: "Corporate Employee Wellness", sub: "Life continuity as a benefit. Bulk plans, HR dashboard, 4-week rollout. 60-day pilot free.", href: "/pricing" },
+  { title: "Channel Partners", sub: "Referral codes and commission for advisors, Wealth managers, CAs, agents, and lawyers", href: "/pricing" },
 ];
 
 export default function Navbar() {
@@ -274,34 +274,31 @@ export default function Navbar() {
                 </button>
                 <div className={`sd-mega${openDrop === "protect" ? " open" : ""}`}>
                   <div className="sd-mega-head">
-                    <span className="sd-mega-head-icon">🔐</span>
-                    <div className="sd-mega-head-text">
-                      <h3>Your Family&apos;s Complete Life Vault</h3>
-                      <p>Everything your family should never have to search for — assets, documents, memories and final wishes.</p>
+                    <div className="sd-mega-head-text" style={{gridColumn:"1/-1"}}>
+                      <h3>Everything your family should never have to search for.</h3>
+                      <p>Bring together the practical and the personal — assets, documents, memories, and final wishes.</p>
                     </div>
                   </div>
                   <div className="sd-mega-body">
                     <div className="sd-mega-col">
-                      <div className="sd-mega-col-label">Financial & Legal</div>
+                      <div className="sd-mega-col-label">Financial &amp; legal</div>
                       {PROTECT_ITEMS.financial.map((item, i) => (
                         <Link key={i} href={item.href} className="sd-mega-item" onClick={() => setOpenDrop(null)}>
-                          <div className="sd-mega-item-icon">{item.icon}</div>
                           <div className="sd-mega-item-body"><h4>{item.title}</h4><p>{item.sub}</p></div>
                         </Link>
                       ))}
                     </div>
                     <div className="sd-mega-col">
-                      <div className="sd-mega-col-label">Personal Legacy</div>
+                      <div className="sd-mega-col-label">Personal legacy</div>
                       {PROTECT_ITEMS.personal.map((item, i) => (
                         <Link key={i} href={item.href} className="sd-mega-item" onClick={() => setOpenDrop(null)}>
-                          <div className="sd-mega-item-icon">{item.icon}</div>
                           <div className="sd-mega-item-body"><h4>{item.title}</h4><p>{item.sub}</p></div>
                         </Link>
                       ))}
                     </div>
                   </div>
                   <div className="sd-mega-footer">
-                    <Link href="https://app.soultdigital.com/signup" className="sd-mega-footer-cta" onClick={() => setOpenDrop(null)}>Start Free Today</Link>
+                    <Link href="https://app.soultdigital.com/signup" className="sd-mega-footer-cta" onClick={() => setOpenDrop(null)}>Get Started Free</Link>
                     <Link href="/pricing" className="sd-mega-footer-link" onClick={() => setOpenDrop(null)}>View pricing →</Link>
                     <Link href="/blog" className="sd-mega-footer-link" onClick={() => setOpenDrop(null)}>Read guides →</Link>
                   </div>
@@ -317,28 +314,19 @@ export default function Navbar() {
                   <span className={`sd-drop-chevron${openDrop === "why" ? " open" : ""}`}>▼</span>
                 </button>
                 <div className={`sd-mega${openDrop === "why" ? " open" : ""}`}>
-                  <div className="sd-mega-head">
-                    <span className="sd-mega-head-icon">💛</span>
-                    <div className="sd-mega-head-text">
-                      <h3>Built for Indian families, by people who care</h3>
-                      <p>Security, simplicity, and peace of mind — designed around how Indian families actually work.</p>
-                    </div>
-                  </div>
                   <div className="sd-mega-body">
                     <div className="sd-mega-col">
-                      <div className="sd-mega-col-label">The Product</div>
-                      {WHY_ITEMS.product.map((item, i) => (
+                      <div className="sd-mega-col-label">Understand Soult</div>
+                      {WHY_ITEMS.understand.map((item, i) => (
                         <Link key={i} href={item.href} className="sd-mega-item" onClick={() => setOpenDrop(null)}>
-                          <div className="sd-mega-item-icon">{item.icon}</div>
                           <div className="sd-mega-item-body"><h4>{item.title}</h4><p>{item.sub}</p></div>
                         </Link>
                       ))}
                     </div>
                     <div className="sd-mega-col">
-                      <div className="sd-mega-col-label">Learn More</div>
+                      <div className="sd-mega-col-label">Learn more</div>
                       {WHY_ITEMS.learn.map((item, i) => (
                         <Link key={i} href={item.href} className="sd-mega-item" onClick={() => setOpenDrop(null)}>
-                          <div className="sd-mega-item-icon">{item.icon}</div>
                           <div className="sd-mega-item-body"><h4>{item.title}</h4><p>{item.sub}</p></div>
                         </Link>
                       ))}
@@ -370,7 +358,6 @@ export default function Navbar() {
                 <div className="sd-drop-small-inner">
                   {BUSINESS_ITEMS.map((item, i) => (
                     <Link key={i} href={item.href} className="sd-mega-item" onClick={() => setOpenDrop(null)}>
-                      <div className="sd-mega-item-icon">{item.icon}</div>
                       <div className="sd-mega-item-body"><h4>{item.title}</h4><p>{item.sub}</p></div>
                     </Link>
                   ))}
@@ -392,20 +379,36 @@ export default function Navbar() {
         <div className="sd-mob-section">What You Can Protect</div>
         {[...PROTECT_ITEMS.financial, ...PROTECT_ITEMS.personal].map((item, i) => (
           <Link key={i} href={item.href} className="sd-mob-link" onClick={() => setMenuOpen(false)}>
-            <span>{item.icon} {item.title}<span className="sd-mob-sub">{item.sub}</span></span>
+            <span>{item.title}<span className="sd-mob-sub">{item.sub}</span></span>
             <span style={{ color: "var(--gold)", fontSize: 12 }}>→</span>
           </Link>
         ))}
         <div className="sd-mob-section">Why Families Choose Soult</div>
-        {WHY_ITEMS.product.map((item, i) => (
+        {WHY_ITEMS.understand.map((item, i) => (
           <Link key={i} href={item.href} className="sd-mob-link" onClick={() => setMenuOpen(false)}>
-            <span>{item.icon} {item.title}<span className="sd-mob-sub">{item.sub}</span></span>
+            <span>{item.title}<span className="sd-mob-sub">{item.sub}</span></span>
+            <span style={{ color: "var(--gold)", fontSize: 12 }}>→</span>
+          </Link>
+        ))}
+        {WHY_ITEMS.learn.map((item, i) => (
+          <Link key={i} href={item.href} className="sd-mob-link" onClick={() => setMenuOpen(false)}>
+            <span>{item.title}<span className="sd-mob-sub">{item.sub}</span></span>
             <span style={{ color: "var(--gold)", fontSize: 12 }}>→</span>
           </Link>
         ))}
         <div className="sd-mob-section">More</div>
-        <Link href="/pricing" className="sd-mob-link" onClick={() => setMenuOpen(false)}>Pricing</Link>
-        <Link href="/blog" className="sd-mob-link" onClick={() => setMenuOpen(false)}>Blog</Link>
+        <Link href="/pricing" className="sd-mob-link" onClick={() => setMenuOpen(false)}>
+          <span>Pricing</span>
+          <span style={{ color: "var(--gold)", fontSize: 12 }}>→</span>
+        </Link>
+        <Link href="/pricing" className="sd-mob-link" onClick={() => setMenuOpen(false)}>
+          <span>Corporate Employee Wellness<span className="sd-mob-sub">Life continuity as a benefit. Bulk plans, HR dashboard, 4-week rollout. 60-day pilot free.</span></span>
+          <span style={{ color: "var(--gold)", fontSize: 12 }}>→</span>
+        </Link>
+        <Link href="/pricing" className="sd-mob-link" onClick={() => setMenuOpen(false)}>
+          <span>Channel Partners<span className="sd-mob-sub">Referral codes and commission for advisors, Wealth managers, CAs, agents, and lawyers</span></span>
+          <span style={{ color: "var(--gold)", fontSize: 12 }}>→</span>
+        </Link>
         <div className="sd-mob-btns">
           <Link href="/vault" className="sd-btn-outline" style={{ textAlign: "center" }}>My Vault</Link>
           <Link href="https://app.soultdigital.com/signup" className="sd-btn-gold" style={{ textAlign: "center" }}>Get Started Free</Link>
