@@ -96,22 +96,22 @@ export default function Footer() {
         }
         .sd-footer-col a:hover { color: var(--beige); }
         .sd-footer-socials {
-          display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap;
+          display: flex; gap: 10px; margin-top: 24px; flex-wrap: wrap;
         }
         .sd-footer-social-link {
-          display: inline-flex; align-items: center; gap: 8px;
-          padding: 8px 14px; border-radius: 8px;
-          border: 1px solid rgba(200,155,60,0.22);
-          background: rgba(200,155,60,0.06);
+          display: inline-flex; align-items: center; gap: 10px;
+          padding: 11px 18px; border-radius: 10px;
+          border: 1.5px solid rgba(245,236,216,0.18);
+          background: rgba(245,236,216,0.05);
           text-decoration: none;
           transition: border-color 0.2s, background 0.2s;
         }
         .sd-footer-social-link:hover {
-          border-color: rgba(200,155,60,0.5);
-          background: rgba(200,155,60,0.12);
+          border-color: rgba(200,155,60,0.55);
+          background: rgba(200,155,60,0.1);
         }
         .sd-footer-social-name {
-          font-size: 12px; font-weight: 700; color: rgba(245,236,216,0.7);
+          font-size: 13px; font-weight: 700; color: rgba(245,236,216,0.85);
           letter-spacing: 0.02em;
         }
         .sd-footer-bottom {
@@ -228,7 +228,7 @@ export default function Footer() {
             <div className="sd-footer-socials">
               {/* Instagram */}
               <a href="https://www.instagram.com/soultdigital" target="_blank" rel="noopener noreferrer" className="sd-footer-social-link" aria-label="Soult on Instagram">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <defs>
                     <linearGradient id="ig-grad" x1="0" y1="24" x2="24" y2="0" gradientUnits="userSpaceOnUse">
                       <stop offset="0%" stopColor="#f09433"/>
@@ -246,14 +246,14 @@ export default function Footer() {
               </a>
               {/* Facebook */}
               <a href="https://www.facebook.com/soultdigital" target="_blank" rel="noopener noreferrer" className="sd-footer-social-link" aria-label="Soult on Facebook">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1877F2" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1877F2" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                 </svg>
                 <span className="sd-footer-social-name">Facebook</span>
               </a>
               {/* LinkedIn */}
               <a href="https://www.linkedin.com/company/soultdigital" target="_blank" rel="noopener noreferrer" className="sd-footer-social-link" aria-label="Soult on LinkedIn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A66C2" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A66C2" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
                   <rect x="2" y="9" width="4" height="12"/>
                   <circle cx="4" cy="4" r="2"/>
